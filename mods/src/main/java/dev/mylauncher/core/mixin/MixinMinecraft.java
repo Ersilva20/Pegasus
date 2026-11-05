@@ -13,10 +13,11 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/** Settings tab: Hit Delay Fix, FPS limits and Borderless Fullscreen. */
+/** Settings tab: Hit Delay Fix, FPS limits and Borderless Fullscreen; mouse side button fix. */
 @Mixin(Minecraft.class)
 public abstract class MixinMinecraft {
     @Shadow private int leftClickCounter;
@@ -81,5 +82,11 @@ public abstract class MixinMinecraft {
         } catch (Exception e) {
             MLCore.LOG.error("Borderless fullscreen failed", e);
         }
+    }
+
+    /** Side button 4 pressed with Shift/Ctrl held must not turn into side button 5 (see MouseFix). */
+    @Redirect(method = "runTick", at = @At(value = "INVOKE", target = "Lorg/lwjgl/input/Mouse;next()Z", remap = false))
+    private boolean ml$mouseNext() {
+        return dev.mylauncher.core.util.MouseFix.next();
     }
 }

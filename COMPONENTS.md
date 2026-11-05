@@ -65,6 +65,8 @@ Required by every Pegasus mod.
 - All keybinds under Options > Controls > **Pegasus Mods**.
 - **Mouse button keybinds fix**: Toggle Perspective, Smooth Camera and every Pegasus keybind react
   immediately when bound to a mouse button (vanilla 1.8.9 waits for the next keyboard press).
+- **Side button fix**: on Windows, LWJGL 2 reads side button 4 as side button 5 while Shift, Ctrl or another
+  mouse button is held (e.g. sprinting + Toggle Perspective dropped your item). Pegasus reads the real button.
 - Pixel-art GUI kit shared by all in-game screens.
 
 ### Settings tab (built in, always on)

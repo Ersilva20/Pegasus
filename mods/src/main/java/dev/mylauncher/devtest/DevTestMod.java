@@ -114,6 +114,7 @@ public class DevTestMod {
         KeyBinding.onTick(-96);
         FMLCommonHandler.instance().fireMouseInput();
         MLCore.LOG.info("DEVTEST mouse pegasus keybind: {}", physics.isEnabled() != before ? "OK" : "FAIL");
+        MLCore.LOG.info("DEVTEST side button fix: {}", dev.mylauncher.core.util.MouseFix.available() ? "OK" : "FAIL");
         if (physics.isEnabled() != before) physics.toggle();
         perspective.setKeyCode(oldPerspective);
         physicsKey.setKeyCode(oldPhysics);
