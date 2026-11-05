@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
 
-@Mod(modid = "ml_packdisplay", name = "Pack Display", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_packdisplay", name = "Resource Pack HUD", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class PackDisplayMod extends HudFeature {
     @Setting(name = "Show Icon")
     public boolean icon = true;
@@ -23,7 +23,7 @@ public class PackDisplayMod extends HudFeature {
     public int backgroundColor = 0x6F000000;
 
     public PackDisplayMod() {
-        super("packdisplay", "Pack Display", "Shows the currently active Resource Pack on the HUD.", Category.HUD, false, 0f, 0.9f);
+        super("packdisplay", "Resource Pack HUD", "Shows the name and icon of the resource pack you are using.", Category.HUD, false, 0f, 0.9f);
     }
 
     private List<ResourcePackRepository.Entry> packs() {

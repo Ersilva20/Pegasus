@@ -153,7 +153,7 @@ function publicAccount(settings) {
 
 let loginWin = null;
 
-/** Lunar-style login: a small window with Microsoft's own page (email, password / 2FA). Resolves with the code. */
+/** Login window: a small window with Microsoft's own page (email, password / 2FA). Resolves with the code. */
 function microsoftLoginWindow(clientId) {
   const req = msauth.authorizeRequest(clientId);
   return new Promise((resolve, reject) => {
@@ -285,7 +285,7 @@ ipcMain.handle('game:launch', async () => {
     throw e;
   }
 });
-// ---- import from Minecraft / Lunar ----
+// ---- import from Minecraft ----
 ipcMain.handle('import:run', () => {
   if (game) throw new Error('Close the game first (it rewrites options.txt when it exits).');
   const report = require('./core/importer').run(inst());

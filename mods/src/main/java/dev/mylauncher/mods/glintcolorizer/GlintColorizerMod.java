@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-@Mod(modid = "ml_glintcolorizer", name = "Glint Colorizer", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_glintcolorizer", name = "Glint Color", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class GlintColorizerMod extends Feature {
     @Setting(name = "Item Glint Color", color = true)
     public int itemColor = 0xFF8040CC;
@@ -19,7 +19,7 @@ public class GlintColorizerMod extends Feature {
     public boolean chroma = false;
 
     public GlintColorizerMod() {
-        super("glintcolorizer", "Glint Colorizer", "Customize the color of enchantment glints", Category.VISUAL);
+        super("glintcolorizer", "Glint Color", "Recolor the enchantment shine on items and armor.", Category.VISUAL);
     }
 
     @Override

@@ -36,7 +36,7 @@ public class ZoomMod extends Feature {
     private float savedSensitivity = -1;
 
     public ZoomMod() {
-        super("zoom", "Zoom", "Allows you to smoothly zoom in and out.", Category.VISUAL, true);
+        super("zoom", "Zoom", "Hold a key to zoom in; scroll to zoom further.", Category.VISUAL, true);
     }
 
     @SubscribeEvent

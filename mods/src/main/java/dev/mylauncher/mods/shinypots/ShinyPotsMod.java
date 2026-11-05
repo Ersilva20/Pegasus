@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 import org.lwjgl.opengl.GL11;
 
 /** Draws the enchantment glint over the whole slot square for potions (1.7 style "full box" shine). */
-@Mod(modid = "ml_shinypots", name = "Shiny Pots", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_shinypots", name = "Shiny Potions", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class ShinyPotsMod extends Feature implements Hooks.GuiItemOverlay {
     private static final ResourceLocation GLINT = new ResourceLocation("textures/misc/enchanted_item_glint.png");
 
@@ -25,7 +25,7 @@ public class ShinyPotsMod extends Feature implements Hooks.GuiItemOverlay {
     public int color = 0xFF8040CC;
 
     public ShinyPotsMod() {
-        super("shinypots", "Shiny Pots", "Gives potions the full box shiny enchantment effect.", Category.VISUAL);
+        super("shinypots", "Shiny Potions", "Potions get the full enchanted shine.", Category.VISUAL);
     }
 
     @Override

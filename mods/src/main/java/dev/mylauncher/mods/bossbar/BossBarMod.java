@@ -25,7 +25,7 @@ public class BossBarMod extends HudFeature {
     public boolean showBar = true;
 
     public BossBarMod() {
-        super("bossbar", "Boss Bar", "Allows you to hide, move or customize the Minecraft boss bar.", Category.HUD, false, 0.5f, 0.02f);
+        super("bossbar", "Boss Bar", "Move, restyle or hide the boss health bar.", Category.HUD, false, 0.5f, 0.02f);
     }
 
     @SubscribeEvent

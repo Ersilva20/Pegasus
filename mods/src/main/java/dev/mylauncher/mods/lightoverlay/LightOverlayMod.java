@@ -24,20 +24,20 @@ import java.util.List;
  * Toggle with F7. Red X = mobs can spawn now (block light and sky light both low),
  * yellow X = mobs can spawn at night (only block light is low).
  */
-@Mod(modid = "ml_lightoverlay", name = "Light Overlay", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_lightoverlay", name = "Light Levels", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class LightOverlayMod extends Feature {
     @Setting(name = "Radius", min = 4, max = 32, step = 1)
     public int radius = 16;
     @Setting(name = "Show Night-Only Spots (yellow)")
     public boolean nightSpots = true;
 
-    private final KeyBinding key = MLCore.key("Toggle Light Overlay", Keyboard.KEY_F7);
+    private final KeyBinding key = MLCore.key("Toggle Light Levels", Keyboard.KEY_F7);
     private boolean visible;
     private final List<long[]> spots = new ArrayList<long[]>();
     private int ticks;
 
     public LightOverlayMod() {
-        super("lightoverlay", "Light Overlay", "Shows the light levels of blocks where mobs can spawn", Category.WORLD, true);
+        super("lightoverlay", "Light Levels", "Marks the blocks where mobs can spawn in the dark.", Category.WORLD, true);
     }
 
     @SubscribeEvent

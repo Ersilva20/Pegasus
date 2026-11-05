@@ -19,7 +19,7 @@ import java.util.List;
  * Teammates = players on the same scoreboard team as you (how most minigames mark teams).
  * Shows a marker above them (through walls) and a HUD list with distance and health.
  */
-@Mod(modid = "ml_teamview", name = "Team View", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_teamview", name = "Teammate Radar", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class TeamViewMod extends TextHud {
     @Setting(name = "World Markers")
     public boolean markers = true;
@@ -31,7 +31,7 @@ public class TeamViewMod extends TextHud {
     public boolean list = true;
 
     public TeamViewMod() {
-        super("teamview", "Team View", "Shows you where your teammates are on the HUD.", Category.PVP, false, 0f, 0.8f);
+        super("teamview", "Teammate Radar", "Marks your teammates through walls and lists their distance and health.", Category.PVP, false, 0f, 0.8f);
         fixedWidth = false;
     }
 

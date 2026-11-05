@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.input.Keyboard;
 
-@Mod(modid = "ml_hotbarkeys", name = "Hotbar Key Overlay", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_hotbarkeys", name = "Hotbar Key Labels", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class HotbarKeysMod extends Feature {
     @Setting(name = "Text Color", color = true)
     public int color = 0xFFFFFFFF;
@@ -17,7 +17,7 @@ public class HotbarKeysMod extends Feature {
     public float textScale = 0.6f;
 
     public HotbarKeysMod() {
-        super("hotbarkeys", "Hotbar Key Overlay", "Show hotbar slot keybinds in the hotbar", Category.HUD);
+        super("hotbarkeys", "Hotbar Key Labels", "Writes the key of each slot on the hotbar.", Category.HUD);
     }
 
     @SubscribeEvent

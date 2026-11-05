@@ -23,7 +23,7 @@ public class ActionBarMod extends Feature implements Hooks.OverlayRenderer {
     public boolean shadow = false;
 
     public ActionBarMod() {
-        super("actionbar", "Action Bar", "Allows you to move and scale Minecraft's action bar.", Category.HUD);
+        super("actionbar", "Action Bar", "Move and resize the action bar text above the hotbar.", Category.HUD);
     }
 
     @Override

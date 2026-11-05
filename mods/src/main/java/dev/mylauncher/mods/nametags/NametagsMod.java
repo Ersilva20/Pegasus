@@ -31,7 +31,7 @@ public class NametagsMod extends Feature {
     public int maxDistance = 64;
 
     public NametagsMod() {
-        super("nametags", "Nametags", "A mod that allows you to modify nametags.", Category.VISUAL);
+        super("nametags", "Nametags", "Change how name tags above players look.", Category.VISUAL);
     }
 
     @SubscribeEvent

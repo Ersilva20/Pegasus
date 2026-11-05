@@ -8,7 +8,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraftforge.fml.common.Mod;
 
 /** A compass strip like the one at the top of FPS games. */
-@Mod(modid = "ml_directionhud", name = "Direction HUD", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_directionhud", name = "Compass", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class DirectionHudMod extends HudFeature {
     private static final String[] LABELS = {"S", "SW", "W", "NW", "N", "NE", "E", "SE"};
 
@@ -26,7 +26,7 @@ public class DirectionHudMod extends HudFeature {
     public boolean degrees = true;
 
     public DirectionHudMod() {
-        super("directionhud", "Direction HUD", "Display your cardinal direction on the HUD.", Category.HUD, false, 0.5f, 0f);
+        super("directionhud", "Compass", "A compass strip showing which way you are facing.", Category.HUD, false, 0.5f, 0f);
     }
 
     @Override

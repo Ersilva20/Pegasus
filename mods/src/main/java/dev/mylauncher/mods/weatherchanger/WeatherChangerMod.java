@@ -18,7 +18,7 @@ public class WeatherChangerMod extends Feature {
     public float strength = 1f;
 
     public WeatherChangerMod() {
-        super("weatherchanger", "Weather Changer", "Customize the current weather.", Category.WORLD);
+        super("weatherchanger", "Weather Changer", "Choose the weather you see. Only changes your screen.", Category.WORLD);
     }
 
     private void apply() {

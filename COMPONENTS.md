@@ -34,12 +34,11 @@ Everything Pegasus does, split by component.
 - Memory slider, JVM preset, extra JVM arguments.
 - Game window size, start in fullscreen, hide or keep the launcher while playing.
 - Azure Client ID for Microsoft login, custom Java 8 path, keep Pegasus mods updated.
-- **Import from Lunar / Minecraft**: copies your existing 1.8.9 setup into Pegasus:
-  - `options.txt` and keybinds (from Lunar's `optionsLC.txt` when present),
+- **Import from Minecraft**: copies your existing 1.8.9 setup into Pegasus:
+  - `options.txt` and keybinds,
   - servers (merged from every 1.8 profile, no duplicates, icons kept),
   - resource packs made for 1.8 (`pack_format` 1; `.rar` packs are reported, not copied),
   - screenshots,
-  - the active Lunar profile's HUD layout: which mods are on, FPS/CPS/Keystrokes positions and text style.
   - Everything replaced is backed up to `instances/<name>/import-backup/<date>` first.
 
 ### Console
@@ -94,14 +93,14 @@ wind, body collision, other players; **P** toggles it in game.
 
 | Category | Mods |
 |---|---|
-| HUD | FPS, CPS, Memory Usage, Ping, Coordinates, Direction HUD, Clock, Server Address, Day Counter, Reach Display, Combo Counter, Momentum, View Angles, Playtime, Stopwatch, Pack Display, TPS Hud, Potion Counter, Item Counter, Armor Status, Potion Effects, Key Strokes, Inventory Hud, WAILA, Hotbar Key Overlay, Saturation, Item Tracker, Scoreboard, Tab Editor, Titles, Action Bar, Boss Bar, F3 Display, Hotbar Customizer, Minimap |
-| PvP | PvP Info, Knockback Trainer, Team View, Cooldowns, Hurt Cam, Damage Tint, Hit Color, Hitbox, 1.7 Visuals, UHC Overlay, Markers, Kill Sounds |
-| Visual | Crosshair, Zoom, FOV Changer, Freelook, Snaplook, Mob Size, Block Outline, Lighting (Fullbright), Overlay, Particle Changer, Glint Colorizer, Shiny Pots, Item Physics, 2D Items, Item Customizer, Nametags, Motion Blur, Menu Blur, Color Saturation |
-| World | Time Changer, Weather Changer, Fog Customizer, Chunk Borders, TNT Countdown, Height Limit, Light Overlay, Waypoints, Custom Skies, WorldEdit CUI |
-| Inventory | Inventory, Slot Locking, Item Drop Protection, Slot Binding, Inventory Search, Container Animations, Scrollable Tooltips |
-| Chat | Chat (stacking, timestamps, background, history), Auto Text Hot Key, Auto Text Actions |
-| Hypixel | Hypixel Quickplay, Hypixel Mods (Auto GG, Auto Tip, hide lobby spam), Hypixel Bedwars, Hypixel Stats |
-| Utility | Nick Hider, GUI Scale, Pack Organizer, Better Sounds, Screenshot Uploader, Mumble Link, Media Player (Spotify), Horse Stats |
+| HUD | FPS, CPS, Memory Usage, Ping, Coordinates, Compass, Clock, Server Address, Day Counter, Reach Display, Combo Counter, Momentum, View Angles, Playtime, Stopwatch, Resource Pack HUD, Server TPS, Potion Counter, Item Counter, Armor Status, Potion Effects, Keystrokes, Inventory Viewer, WAILA, Hotbar Key Labels, Saturation, Pickup Log, Scoreboard, Tab List, Titles, Action Bar, Boss Bar, Debug Screen, Hotbar Layout, Minimap |
+| PvP | Fight Stats, Knockback Trainer, Teammate Radar, Cooldowns, Damage Shake, Low Health Tint, Hit Flash Color, Hitbox, Old Animations, UHC Highlight, Ping Markers, Kill Sound |
+| Visual | Crosshair, Zoom, FOV Control, Freelook, Hold Perspective, Mob Scale, Block Outline, Lighting Tweaks (Fullbright), Screen Overlays, Particle Tweaks, Glint Color, Shiny Potions, Item Physics, Flat Items, Held Item Tweaks, Nametags, Motion Blur, Background Blur, Vibrance |
+| World | Time Changer, Weather Changer, Fog Control, Chunk Borders, TNT Timer, Build Limit, Light Levels, Waypoints, Custom Skies, WorldEdit CUI |
+| Inventory | Inventory Extras, Slot Lock, Drop Guard, Slot Swap, Inventory Search, Menu Animations, Scrollable Tooltips |
+| Chat | Chat (stacking, timestamps, background, history), Chat Macros, Auto Reply |
+| Hypixel | Quick Join, Hypixel Toolkit (Auto GG, Auto Tip, hide lobby spam), Bed Wars Helper, Stats Lookup |
+| Utility | Streamer Mode, GUI Scale, Pack Folders, Sound Mixer, Screenshot Manager, Mumble Link, Now Playing (Spotify), Horse Stats |
 
 ### Replay Mod (third party)
 The official [Replay Mod](https://www.replaymod.com) 1.8.9 (2.6.28, by CrushedPixel and johni0702, GPL-3.0) is installed
@@ -110,20 +109,18 @@ It shows up in the launcher's PEGASUS tab and can be disabled there. Record, wat
 main menu (Replay Viewer).
 
 ### Default keys
-Zoom **C** · Freelook **Left Alt** · Chunk Borders **F9** · Light Overlay **F7** · Add Waypoint **B** ·
-Quickplay **J** · Slot Lock **L** · Slot Bind **K** · Marker **Middle Mouse** · Wardrobe **O** ·
+Zoom **C** · Freelook **Left Alt** · Chunk Borders **F9** · Light Levels **F7** · Add Waypoint **B** ·
+Quick Join **J** · Slot Lock **L** · Slot Swap **K** · Ping Marker **Middle Mouse** · Wardrobe **O** ·
 Cape Physics **P** · Mod Menu **Right Shift**
 
 ### Commands
 `/pegasus` or `/ml` (menu) · `/wardrobe` · `/waypoint add|remove|list|toggle|color` (`/wp`) ·
 `/stats <player> [bedwars|duels|skywars]` (needs your Hypixel API key)
 
-### Differences from Lunar
-- Cooldowns, Team View and Markers work client-side (Lunar gets them from servers through its Apollo API).
-- Screenshot Uploader opens/copies/shows the file instead of uploading to Lunar's service.
-- Not included: Radio (licensed service), Rewind, Tier Tagger (no public API),
-  3D Skins (planned), staff cheats (X-Ray/BHop), and features that don't exist in 1.8.9.
+### Notes
+- Cooldowns, Teammate Radar and Ping Markers work fully client-side: no server support needed.
+- Not included on purpose: cheats (X-Ray, BHop...) and features that don't exist in 1.8.9. 3D skins are planned.
 
 ### Server rules
-Most servers allow HUD/visual mods. Some forbid Freelook, Auto Text Actions, auto-GG style automation,
+Most servers allow HUD/visual mods. Some forbid Freelook, Auto Reply, auto-GG style automation,
 Hitbox/Reach displays or Hit Delay Fix. Check each server's allowed-mods list first.

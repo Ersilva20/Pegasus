@@ -3,7 +3,7 @@ const path = require('path');
 const os = require('os');
 const fs = require('fs');
 
-/** Everything lives in %APPDATA%\.pegasus (separate from .minecraft and .lunarclient). */
+/** Everything lives in %APPDATA%\.pegasus (separate from .minecraft). */
 const BASE = process.env.APPDATA || path.join(os.homedir(), '.config');
 const ROOT = process.env.PEGASUS_HOME || path.join(BASE, '.pegasus');
 

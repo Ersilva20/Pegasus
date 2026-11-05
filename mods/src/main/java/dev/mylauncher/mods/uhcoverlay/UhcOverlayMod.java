@@ -12,7 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 
 /** Makes gold, golden apples and heads bigger on the ground so they're easy to spot in UHC. */
-@Mod(modid = "ml_uhcoverlay", name = "UHC Overlay", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_uhcoverlay", name = "UHC Highlight", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class UhcOverlayMod extends Feature implements Hooks.DroppedItemScale {
     @Setting(name = "Gold Ingot Size", min = 1, max = 5, step = 0.25)
     public float ingot = 2f;
@@ -26,7 +26,7 @@ public class UhcOverlayMod extends Feature implements Hooks.DroppedItemScale {
     public float head = 2.5f;
 
     public UhcOverlayMod() {
-        super("uhcoverlay", "UHC Overlay", "Resize items that are commonly needed in UHC to make spotting them easier.", Category.PVP);
+        super("uhcoverlay", "UHC Highlight", "Makes gold, apples and heads on the ground bigger so they are easy to spot.", Category.PVP);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class ScrollTooltipsMod extends Feature {
     private Slot lastSlot;
 
     public ScrollTooltipsMod() {
-        super("scrolltooltips", "Scrollable Tooltips", "Use your scroll wheel to read overly long item descriptions.", Category.INVENTORY);
+        super("scrolltooltips", "Scrollable Tooltips", "Scroll long item tooltips with the mouse wheel.", Category.INVENTORY);
     }
 
     @Override

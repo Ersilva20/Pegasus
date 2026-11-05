@@ -47,7 +47,7 @@ public class MinimapMod extends HudFeature {
     private double centerX, centerZ;
 
     public MinimapMod() {
-        super("minimap", "Minimap", "Display a miniature map of the world on your HUD.", Category.HUD, false, 1f, 0f);
+        super("minimap", "Minimap", "A small map of the area around you.", Category.HUD, false, 1f, 0f);
     }
 
     @SubscribeEvent

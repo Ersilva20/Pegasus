@@ -22,7 +22,7 @@ public class GuiScaleMod extends Feature {
     private int original = -1;
 
     public GuiScaleMod() {
-        super("guiscale", "GUI Scale", "Allows you to set a custom GUI scale different from the Minecraft settings.", Category.UTILITY);
+        super("guiscale", "GUI Scale", "Use a GUI scale other than the one in Minecraft's options.", Category.UTILITY);
     }
 
     @Override

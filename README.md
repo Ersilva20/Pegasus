@@ -1,8 +1,7 @@
 # Pegasus
 
-A personal Minecraft **1.8.9** PvP client: an Electron launcher with a pixel-art UI plus a set of
-Lunar-style Forge mods written from scratch. Unlike Lunar Client, Pegasus runs on plain **Forge**, so any
-Forge 1.8.9 mod can be added next to the built-in ones.
+A personal Minecraft **1.8.9** PvP client: an Electron launcher with a pixel-art UI plus about 100 Forge mods
+written from scratch. Pegasus runs on plain **Forge**, so any Forge 1.8.9 mod can be added next to the built-in ones.
 
 See [COMPONENTS.md](COMPONENTS.md) for everything the launcher and the mods do.
 
@@ -50,7 +49,7 @@ npm run dist
 ```
 
 The launcher installs everything else on first PLAY: Java 8 (Temurin), Minecraft 1.8.9 and Forge
-11.15.1.2318. Game data lives in `%APPDATA%\.pegasus` (separate from `.minecraft` and `.lunarclient`).
+11.15.1.2318. Game data lives in `%APPDATA%\.pegasus` (separate from `.minecraft`).
 
 ### Testing
 
@@ -78,7 +77,6 @@ Offline mode works for singleplayer and offline servers.
 
 ## Notes
 
-- Pegasus is a personal project, not affiliated with Mojang, Microsoft or Lunar Client.
+- Pegasus is a personal project, not affiliated with Mojang or Microsoft.
 - Replay Mod is a third-party mod (GPL-3.0) that the launcher downloads from replaymod.com; it is not part of this repository.
-- No Lunar Client code or assets are included. Personal cape images are only ever stored locally in the
-  game folder and are never part of this repository.
+- Every built-in cape is original Pegasus art, painted in code.

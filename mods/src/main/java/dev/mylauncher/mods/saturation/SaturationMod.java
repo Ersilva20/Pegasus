@@ -23,7 +23,7 @@ public class SaturationMod extends SimpleTextHud {
     public boolean showHud = true;
 
     public SaturationMod() {
-        super("saturation", "Saturation", "Saturation HUD with AppleSkin features", 1f, 0.3f);
+        super("saturation", "Saturation", "Shows your hidden food saturation next to the hunger bar.", 1f, 0.3f);
     }
 
     @Override

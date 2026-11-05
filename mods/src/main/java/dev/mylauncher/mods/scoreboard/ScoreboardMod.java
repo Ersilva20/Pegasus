@@ -33,7 +33,7 @@ public class ScoreboardMod extends HudFeature implements Hooks.ScoreboardRendere
     public int titleBackground = 0x60000000;
 
     public ScoreboardMod() {
-        super("scoreboard", "Scoreboard", "Allows you to hide, move, or customize the Minecraft scoreboard.", Category.HUD, false, 1f, 0.5f);
+        super("scoreboard", "Scoreboard", "Move, resize or hide the sidebar scoreboard.", Category.HUD, false, 1f, 0.5f);
     }
 
     @Override

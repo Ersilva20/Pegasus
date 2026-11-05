@@ -24,7 +24,7 @@ public class PlaytimeMod extends SimpleTextHud {
     private int ticks;
 
     public PlaytimeMod() {
-        super("playtime", "Playtime", "Track how long you are playing.", 1f, 0.12f);
+        super("playtime", "Playtime", "Shows how long you have been playing this session.", 1f, 0.12f);
     }
 
     private Data data() {

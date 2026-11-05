@@ -8,7 +8,7 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod(modid = "ml_inventoryhud", name = "Inventory Hud", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_inventoryhud", name = "Inventory Viewer", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class InventoryHudMod extends HudFeature {
     @Setting(name = "Background")
     public boolean background = true;
@@ -20,7 +20,7 @@ public class InventoryHudMod extends HudFeature {
     public boolean hideEmpty = true;
 
     public InventoryHudMod() {
-        super("inventoryhud", "Inventory Hud", "A hud mod that shows your inventory contents.", Category.HUD, false, 0.5f, 0.75f);
+        super("inventoryhud", "Inventory Viewer", "Shows the items in your inventory without opening it.", Category.HUD, false, 0.5f, 0.75f);
     }
 
     private int rows() {

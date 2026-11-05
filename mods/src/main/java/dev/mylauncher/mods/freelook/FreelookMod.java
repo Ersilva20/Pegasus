@@ -33,7 +33,7 @@ public class FreelookMod extends Feature implements Hooks.AnglesHook {
     private boolean swapped;
 
     public FreelookMod() {
-        super("freelook", "Freelook", "When activated, allows you to change your camera perspective without rotating your player.", Category.VISUAL);
+        super("freelook", "Freelook", "Turn the camera around your player while you keep walking straight.", Category.VISUAL);
     }
 
     @Override

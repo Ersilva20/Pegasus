@@ -24,7 +24,7 @@ public class TitlesMod extends Feature implements Hooks.OverlayRenderer {
     public boolean shadow = true;
 
     public TitlesMod() {
-        super("titles", "Titles", "Adjust the minecraft title and subtitle scale and location.", Category.HUD);
+        super("titles", "Titles", "Move and resize the big title and subtitle text.", Category.HUD);
     }
 
     @Override

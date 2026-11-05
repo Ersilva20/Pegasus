@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import java.util.regex.Pattern;
 
 /** Auto GG, Auto Tip and lobby message hiding for Hypixel. Only active while connected to Hypixel. */
-@Mod(modid = "ml_hypixelmods", name = "Hypixel Mods", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_hypixelmods", name = "Hypixel Toolkit", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class HypixelModsMod extends Feature {
     private static final String[] GAME_END = {
             "1st Killer - ", "1st Place - ", "Winner: ", " - Damage Dealt - ", "Winning Team - ", "1st - ",
@@ -38,7 +38,7 @@ public class HypixelModsMod extends Feature {
     private long lastTip;
 
     public HypixelModsMod() {
-        super("hypixelmods", "Hypixel Mods", "A collection of mods that directly integrate with the Hypixel server network.", Category.HYPIXEL);
+        super("hypixelmods", "Hypixel Toolkit", "Auto GG, auto tip and a lobby spam filter for Hypixel.", Category.HYPIXEL);
     }
 
     private boolean onHypixel() {

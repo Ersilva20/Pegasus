@@ -29,7 +29,7 @@ public class ItemCounterMod extends HudFeature {
     private List<Item> parsed = new ArrayList<Item>();
 
     public ItemCounterMod() {
-        super("itemcounter", "Item Counter", "Displays how many of the items you have selected are currently in your inventory, on the HUD.",
+        super("itemcounter", "Item Counter", "Counts how many of the item in your hand you carry in total.",
                 Category.HUD, false, 1f, 0.5f);
         onSettingsChanged();
     }

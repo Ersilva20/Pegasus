@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 /** Shows "+3 Iron Ingot" / "-1 Arrow" when your inventory changes. */
-@Mod(modid = "ml_itemtracker", name = "Item Tracker", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_itemtracker", name = "Pickup Log", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class ItemTrackerMod extends HudFeature {
     private static final class Entry {
         ItemStack stack;
@@ -38,7 +38,7 @@ public class ItemTrackerMod extends HudFeature {
     private final Map<String, ItemStack> samples = new HashMap<String, ItemStack>();
 
     public ItemTrackerMod() {
-        super("itemtracker", "Item Tracker", "Shows you when and how much items you pick up or drop.", Category.HUD, false, 1f, 0.6f);
+        super("itemtracker", "Pickup Log", "Lists the items you pick up and drop, with amounts.", Category.HUD, false, 1f, 0.6f);
     }
 
     private static String key(ItemStack s) {

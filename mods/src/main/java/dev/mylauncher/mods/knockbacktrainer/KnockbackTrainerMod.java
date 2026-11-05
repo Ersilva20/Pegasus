@@ -41,7 +41,7 @@ public class KnockbackTrainerMod extends HudFeature {
     private double groundY;
 
     public KnockbackTrainerMod() {
-        super("knockbacktrainer", "Knockback Trainer", "Train jump resets: how close your jump press lands to the tick you were hit.",
+        super("knockbacktrainer", "Knockback Trainer", "Practice jump resets: shows how many ticks off your jump was after a hit.",
                 Category.PVP, false, 0.5f, 0.62f);
     }
 

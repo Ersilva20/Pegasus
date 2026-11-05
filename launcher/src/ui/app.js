@@ -472,7 +472,7 @@ $('importBtn').onclick = async () => {
     bindSettings();
     const parts = [];
     if (r.options) parts.push('options + keybinds');
-    parts.push(r.servers + ' server(s)', r.packs.length + ' texture pack(s)', r.screenshots + ' screenshot(s)', r.mods + ' mod setting(s)');
+    parts.push(r.servers + ' server(s)', r.packs.length + ' texture pack(s)', r.screenshots + ' screenshot(s)');
     let text = 'Imported: ' + parts.join(', ') + '.';
     if (r.skippedPacks.length) text += ' Not imported (.rar, extract them into a folder first): ' + r.skippedPacks.join(', ') + '.';
     $('importResult').textContent = text;
@@ -481,7 +481,7 @@ $('importBtn').onclick = async () => {
     toast(errMsg(e), true);
   } finally {
     btn.disabled = false;
-    btn.textContent = 'IMPORT FROM LUNAR / MINECRAFT';
+    btn.textContent = 'IMPORT FROM MINECRAFT';
   }
 };
 

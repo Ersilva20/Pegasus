@@ -30,7 +30,7 @@ public class ChunkBordersMod extends Feature {
     private boolean visible;
 
     public ChunkBordersMod() {
-        super("chunkborders", "Chunk Borders", "View the border of the current chunk", Category.WORLD, true);
+        super("chunkborders", "Chunk Borders", "Draws the edges of the chunk you are standing in.", Category.WORLD, true);
     }
 
     @SubscribeEvent

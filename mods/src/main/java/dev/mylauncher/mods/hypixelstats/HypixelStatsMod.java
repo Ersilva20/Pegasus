@@ -24,7 +24,7 @@ import java.nio.charset.StandardCharsets;
  * /stats &lt;player&gt; [bedwars|duels|skywars] using the official Hypixel API. You need your own API key
  * (from the Hypixel Developer Dashboard); paste it in this mod's settings. Requests run off the game thread.
  */
-@Mod(modid = "ml_hypixelstats", name = "Hypixel Stats", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_hypixelstats", name = "Stats Lookup", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class HypixelStatsMod extends Feature {
     @Setting(name = "Hypixel API Key")
     public String apiKey = "";
@@ -32,7 +32,7 @@ public class HypixelStatsMod extends Feature {
     private boolean registered;
 
     public HypixelStatsMod() {
-        super("hypixelstats", "Hypixel Stats", "Tracks stats across different Hypixel games.", Category.HYPIXEL);
+        super("hypixelstats", "Stats Lookup", "Look up a player's Hypixel stats with /stats.", Category.HYPIXEL);
     }
 
     @Override
@@ -53,11 +53,11 @@ public class HypixelStatsMod extends Feature {
             @Override
             public void processCommand(ICommandSender sender, String[] args) {
                 if (!isEnabled()) {
-                    MLCore.chat("Hypixel Stats is disabled.");
+                    MLCore.chat("Stats Lookup is disabled.");
                     return;
                 }
                 if (apiKey.trim().isEmpty()) {
-                    MLCore.chat("Set your Hypixel API key in the Hypixel Stats settings first.");
+                    MLCore.chat("Set your Hypixel API key in the Stats Lookup settings first.");
                     return;
                 }
                 final String name = args.length > 0 ? args[0] : mc.thePlayer.getName();

@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-@Mod(modid = "ml_tabeditor", name = "Tab Editor", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_tabeditor", name = "Tab List", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class TabEditorMod extends Feature implements Hooks.PingRenderer {
     @Setting(name = "Scale", min = 0.5, max = 1.5, step = 0.05)
     public float scale = 1f;
@@ -22,7 +22,7 @@ public class TabEditorMod extends Feature implements Hooks.PingRenderer {
     public boolean hideFooter = false;
 
     public TabEditorMod() {
-        super("tabeditor", "Tab Editor", "Allows you to customize the in-game tab.", Category.HUD);
+        super("tabeditor", "Tab List", "Change how the player list (Tab) looks.", Category.HUD);
     }
 
     @Override

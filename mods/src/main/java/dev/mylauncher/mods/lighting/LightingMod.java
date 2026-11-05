@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import org.lwjgl.input.Keyboard;
 
 /** Fullbright (high gamma) plus options that remove costly lighting effects. */
-@Mod(modid = "ml_lighting", name = "Lighting", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_lighting", name = "Lighting Tweaks", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class LightingMod extends Feature {
     @Setting(name = "Fullbright")
     public boolean fullbright = true;
@@ -26,7 +26,7 @@ public class LightingMod extends Feature {
     private boolean savedShadows;
 
     public LightingMod() {
-        super("lighting", "Lighting", "Allows you to configure or disable lighting effects, which can increase FPS.", Category.VISUAL);
+        super("lighting", "Lighting Tweaks", "Fullbright, and turning off entity shadows for more FPS.", Category.VISUAL);
     }
 
     @Override

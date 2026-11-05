@@ -44,7 +44,7 @@ public class HitboxMod extends Feature implements Hooks.HitboxRenderer {
     public float width = 2f;
 
     public HitboxMod() {
-        super("hitbox", "Hitbox", "Customize the hitbox displayed in F3+B", Category.PVP);
+        super("hitbox", "Hitbox", "Change the look of the F3+B hitboxes.", Category.PVP);
     }
 
     @Override

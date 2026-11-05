@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = "ml_mobsize", name = "Mob Size", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_mobsize", name = "Mob Scale", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class MobSizeMod extends Feature {
     @Setting(name = "Mob Scale", min = 0.1, max = 3, step = 0.05)
     public float mobs = 1.0f;
@@ -23,7 +23,7 @@ public class MobSizeMod extends Feature {
     private EntityLivingBase scaled;
 
     public MobSizeMod() {
-        super("mobsize", "Mob Size", "Changes the size of mobs.", Category.VISUAL);
+        super("mobsize", "Mob Scale", "Draws mobs bigger or smaller.", Category.VISUAL);
     }
 
     private float scaleFor(EntityLivingBase e) {

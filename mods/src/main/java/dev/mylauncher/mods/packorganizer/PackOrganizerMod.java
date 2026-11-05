@@ -24,7 +24,7 @@ import java.util.Map;
  * Sort resource packs into folders inside .minecraft/resourcepacks. Packs inside folders (up to the chosen
  * depth) appear in the Resource Packs screen, and selected ones are restored when the game starts.
  */
-@Mod(modid = "ml_packorganizer", name = "Pack Organizer", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_packorganizer", name = "Pack Folders", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class PackOrganizerMod extends Feature {
     @Setting(name = "Folder Depth", min = 1, max = 4, step = 1)
     public int depth = 2;
@@ -33,7 +33,7 @@ public class PackOrganizerMod extends Feature {
     private boolean restored;
 
     public PackOrganizerMod() {
-        super("packorganizer", "Pack Organizer", "Allows you to organize your resource packs into folders", Category.UTILITY);
+        super("packorganizer", "Pack Folders", "Group your resource packs into folders.", Category.UTILITY);
     }
 
     private static boolean isPack(File f) {
@@ -53,7 +53,7 @@ public class PackOrganizerMod extends Feature {
                 for (File f : top) if (f.isDirectory() && !isPack(f)) scan(repo, ctor, f, 1, out);
             }
         } catch (Exception e) {
-            MLCore.LOG.error("Pack Organizer could not scan folders", e);
+            MLCore.LOG.error("Pack Folders could not scan folders", e);
         }
         return out;
     }
@@ -128,7 +128,7 @@ public class PackOrganizerMod extends Feature {
                 if (!present.contains(entry.getResourcePackName())) available.add(new ResourcePackListEntryFound(gui, entry));
             }
         } catch (Exception e) {
-            MLCore.LOG.error("Pack Organizer could not add folder packs", e);
+            MLCore.LOG.error("Pack Folders could not add folder packs", e);
         }
     }
 }

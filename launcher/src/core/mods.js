@@ -61,8 +61,28 @@ function migrateLegacy(src, dest) {
 }
 
 // Bundled jars that no longer exist: merged into the core (Cosmetics; Toggle Sneak is now in Settings) or renamed.
-const RETIRED_RE = /^(Pegasus|ML)-(Cosmetics|ToggleSneakSprint|Physics)(-[\d.]+)?\.jar(\.disabled)?$/;
-const RENAMED = { Physics: 'CapePhysics' };
+const MERGED = ['Cosmetics', 'ToggleSneakSprint'];
+const RENAMED = {
+  Physics: 'CapePhysics',
+  // 2026-11-05: mods renamed to Pegasus' own names (config ids did not change).
+  DirectionHUD: 'Compass', PackDisplay: 'ResourcePackHUD', TPSHud: 'ServerTPS', KeyStrokes: 'Keystrokes',
+  InventoryHud: 'InventoryViewer', HotbarKeyOverlay: 'HotbarKeyLabels', PvPInfo: 'FightStats', ItemTracker: 'PickupLog',
+  TeamView: 'TeammateRadar', FOVChanger: 'FOVControl', Snaplook: 'HoldPerspective', FogCustomizer: 'FogControl',
+  HurtCam: 'DamageShake', DamageTint: 'LowHealthTint', HitColor: 'HitFlashColor', MobSize: 'MobScale',
+  Lighting: 'LightingTweaks', Overlay: 'ScreenOverlays', ParticleChanger: 'ParticleTweaks', GlintColorizer: 'GlintColor',
+  ShinyPots: 'ShinyPotions', '2DItems': 'FlatItems', ItemCustomizer: 'HeldItemTweaks', UHCOverlay: 'UHCHighlight',
+  '1.7Visuals': 'OldAnimations', NickHider: 'StreamerMode', TabEditor: 'TabList', F3Display: 'DebugScreen',
+  MenuBlur: 'BackgroundBlur', ColorSaturation: 'Vibrance', TNTCountdown: 'TNTTimer', HeightLimit: 'BuildLimit',
+  LightOverlay: 'LightLevels', Markers: 'PingMarkers', Inventory: 'InventoryExtras', SlotLocking: 'SlotLock',
+  ItemDropProtection: 'DropGuard', SlotBinding: 'SlotSwap', HotbarCustomizer: 'HotbarLayout',
+  ContainerAnimations: 'MenuAnimations', PackOrganizer: 'PackFolders', AutoTextHotKey: 'ChatMacros',
+  AutoTextActions: 'AutoReply', HypixelQuickplay: 'QuickJoin', HypixelMods: 'HypixelToolkit',
+  HypixelBedwars: 'BedWarsHelper', HypixelStats: 'StatsLookup', KillSounds: 'KillSound', BetterSounds: 'SoundMixer',
+  ScreenshotUploader: 'ScreenshotManager', MediaPlayer: 'NowPlaying',
+};
+const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const RETIRED_RE = new RegExp(
+  '^(Pegasus|ML)-(' + [...MERGED, ...Object.keys(RENAMED)].map(escapeRe).join('|') + ')(-[\\d.]+)?\\.jar(\\.disabled)?$');
 
 function retireOld(src, dest) {
   const bundled = fs.readdirSync(src).filter((n) => n.endsWith('.jar'));

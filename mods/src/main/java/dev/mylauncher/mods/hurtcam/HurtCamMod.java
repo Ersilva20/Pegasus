@@ -10,7 +10,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraftforge.fml.common.Mod;
 
 /** Scales (or removes) the camera shake when you take damage. 0% = no shake, 100% = vanilla. */
-@Mod(modid = "ml_hurtcam", name = "Hurt Cam", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_hurtcam", name = "Damage Shake", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class HurtCamMod extends Feature implements Hooks.PartialTickCancel {
     @Setting(name = "Shake Intensity (%)", min = 0, max = 200, step = 5)
     public int intensity = 0;
@@ -18,7 +18,7 @@ public class HurtCamMod extends Feature implements Hooks.PartialTickCancel {
     public boolean deathTilt = true;
 
     public HurtCamMod() {
-        super("hurtcam", "Hurt Cam", "Manage the hurt camera shaking animation.", Category.PVP);
+        super("hurtcam", "Damage Shake", "Lower or turn off the camera shake when you take damage.", Category.PVP);
     }
 
     @Override

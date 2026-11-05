@@ -58,7 +58,7 @@ public class WaypointsMod extends Feature {
     private boolean commandRegistered;
 
     public WaypointsMod() {
-        super("waypoints", "Waypoints", "Create waypoints anywhere in the world with distance, name and a beam.", Category.WORLD, true);
+        super("waypoints", "Waypoints", "Save places and see them in the world with a beam, name and distance.", Category.WORLD, true);
     }
 
     private Data data() {

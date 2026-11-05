@@ -16,7 +16,7 @@ import org.lwjgl.input.Mouse;
 import java.io.IOException;
 
 /** Press J for a menu of Hypixel games; click one to join (/play ...). */
-@Mod(modid = "ml_quickplay", name = "Hypixel Quickplay", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_quickplay", name = "Quick Join", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class QuickplayMod extends Feature {
     static final String[][][] GAMES = {
             {{"Bed Wars"}, {"Solo", "/play bedwars_eight_one"}, {"Doubles", "/play bedwars_eight_two"}, {"3v3v3v3", "/play bedwars_four_three"}, {"4v4v4v4", "/play bedwars_four_four"}, {"4v4", "/play bedwars_two_four"}, {"Lobby", "/l bedwars"}},
@@ -27,10 +27,10 @@ public class QuickplayMod extends Feature {
             {{"Other"}, {"Build Battle", "/play build_battle_solo_normal"}, {"UHC Solo", "/play uhc_solo"}, {"Mega Walls", "/play mw_standard"}, {"Blitz SG", "/play blitz_solo_normal"}, {"Party Games", "/play arcade_party_games_1"}, {"Main Lobby", "/l main"}, {"SkyBlock", "/play skyblock"}}
     };
 
-    private final KeyBinding key = MLCore.key("Open Quickplay", Keyboard.KEY_J);
+    private final KeyBinding key = MLCore.key("Open Quick Join", Keyboard.KEY_J);
 
     public QuickplayMod() {
-        super("quickplay", "Hypixel Quickplay", "Quickly join games on the Hypixel network", Category.HYPIXEL);
+        super("quickplay", "Quick Join", "Join Hypixel games from a menu.", Category.HYPIXEL);
     }
 
     @SubscribeEvent
@@ -47,7 +47,7 @@ public class QuickplayMod extends Feature {
             drawRect(0, 0, width, height, Theme.OVERLAY);
             int pw = 300, ph = 200, px = (width - pw) / 2, py = (height - ph) / 2;
             RenderUtil.softRect(px, py, px + pw, py + ph, Theme.PANEL);
-            fontRendererObj.drawStringWithShadow("Hypixel Quickplay", px + 8, py + 8, Theme.TEXT);
+            fontRendererObj.drawStringWithShadow("Quick Join", px + 8, py + 8, Theme.TEXT);
             for (int i = 0; i < GAMES.length; i++) {
                 int y = py + 24 + i * 18;
                 boolean sel = i == category, hov = mx >= px + 6 && mx < px + 96 && my >= y && my < y + 16;

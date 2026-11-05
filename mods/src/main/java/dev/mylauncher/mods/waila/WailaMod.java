@@ -35,7 +35,7 @@ public class WailaMod extends HudFeature {
     private ItemStack icon;
 
     public WailaMod() {
-        super("waila", "WAILA", "What am I looking at?", Category.HUD, false, 0.5f, 0f);
+        super("waila", "WAILA", "Names the block or mob under your crosshair.", Category.HUD, false, 0.5f, 0f);
     }
 
     private boolean update(boolean editing) {

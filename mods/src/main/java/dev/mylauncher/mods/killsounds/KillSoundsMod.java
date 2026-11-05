@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
 /** Plays a sound when you kill a player (detected from your hits and from kill messages in chat). */
-@Mod(modid = "ml_killsounds", name = "Kill Sounds", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_killsounds", name = "Kill Sound", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class KillSoundsMod extends Feature {
     public enum Sound {
         ORB("random.orb"), LEVEL_UP("random.levelup"), ANVIL("random.anvil_land"), PLING("note.pling"),
@@ -39,7 +39,7 @@ public class KillSoundsMod extends Feature {
     private long lastPlayed;
 
     public KillSoundsMod() {
-        super("killsounds", "Kill Sounds", "Allows you to change kill sounds for players.", Category.PVP);
+        super("killsounds", "Kill Sound", "Plays a sound when you kill a player.", Category.PVP);
     }
 
     private void play() {

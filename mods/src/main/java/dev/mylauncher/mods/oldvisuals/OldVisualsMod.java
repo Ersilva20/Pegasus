@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.Mod;
  * 1.7-style animations: swinging while blocking/eating/drinking/using a bow ("block-hit"),
  * and the slightly lower/rotated 1.7 sword block position.
  */
-@Mod(modid = "ml_oldvisuals", name = "1.7 Visuals", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_oldvisuals", name = "Old Animations", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class OldVisualsMod extends Feature implements Hooks.FirstPersonTransform {
     @Setting(name = "Block-Hit Animation")
     public boolean blockHit = true;
@@ -26,7 +26,7 @@ public class OldVisualsMod extends Feature implements Hooks.FirstPersonTransform
     public boolean oldBlock = true;
 
     public OldVisualsMod() {
-        super("oldvisuals", "1.7 Visuals", "Revert certain visuals and animations to how they behaved on 1.7.", Category.PVP);
+        super("oldvisuals", "Old Animations", "Brings back 1.7 animations like block-hitting and the old bow and rod poses.", Category.PVP);
     }
 
     @Override

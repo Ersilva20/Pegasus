@@ -35,9 +35,9 @@ public class DevTestMod {
             {"01b-physics", "pegasus", "PHYSICS", "", "1", ""},
             {"02-settings", "pegasus", "SETTINGS", "", "1", ""},
             {"02b-crosshair-editor", "pegasus", "CROSSHAIR", "", "1", ""},
-            {"03-wardrobe", "file:lunar/aurora.png", "CAPE", "", "1", "ALL"},
-            {"04-cape-walk", "file:lunar/akatsuki.png", "", "walk", "1", ""},
-            {"05-cape-turn", "file:mojang/2016.png", "", "turn", "1", ""},
+            {"03-wardrobe", "aurora", "CAPE", "", "1", "ALL"},
+            {"04-cape-walk", "galaxy", "", "walk", "1", ""},
+            {"05-cape-turn", "storm", "", "turn", "1", ""},
             {"06-cape-still", "pegasus", "", "", "1", ""},
     };
 

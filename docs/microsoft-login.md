@@ -1,11 +1,11 @@
 # Microsoft login for Pegasus
 
-The login works like Lunar's: click your name (top right) → **SIGN IN WITH MICROSOFT** → a Microsoft window
+Signing in: click your name (top right) → **SIGN IN WITH MICROSOFT** → a Microsoft window
 opens → type your **email**, then your **password** (or approve it in the Authenticator app / 2FA) → done.
 The badge turns green ("MICROSOFT") and PLAY uses your real account and skin on servers.
 
 Behind that window, every launcher that isn't the official one needs its **own app registration** with Microsoft,
-plus Microsoft's approval to use the Minecraft API. Lunar, Prism and the others all have one. It's free and you
+plus Microsoft's approval to use the Minecraft API. Every third-party launcher has one. It's free and you
 only do it once.
 
 ## 1. Register the app (about 5 minutes)

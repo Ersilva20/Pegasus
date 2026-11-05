@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
  * Shows what Spotify is playing (read from the Spotify window title) and sends media keys
  * (play/pause, next, previous) to control any media app. Windows only.
  */
-@Mod(modid = "ml_mediaplayer", name = "Media Player", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_mediaplayer", name = "Now Playing", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class MediaPlayerMod extends SimpleTextHud {
     interface User32 extends Library {
         void keybd_event(byte vk, byte scan, int flags, Pointer extra);
@@ -38,7 +38,7 @@ public class MediaPlayerMod extends SimpleTextHud {
     private User32 user32;
 
     public MediaPlayerMod() {
-        super("mediaplayer", "Media Player", "See and control the media playing on your computer, like Spotify.", 0.5f, 0.92f);
+        super("mediaplayer", "Now Playing", "Shows the song playing on your computer and lets you control it.", 0.5f, 0.92f);
     }
 
     @Override

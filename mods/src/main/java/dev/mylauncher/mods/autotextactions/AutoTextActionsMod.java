@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
  * When a received chat message contains a trigger, send a reply. Each rule is "trigger => reply".
  * Automatic replies can be against some servers' rules; check before using.
  */
-@Mod(modid = "ml_autotextactions", name = "Auto Text Actions", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_autotextactions", name = "Auto Reply", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class AutoTextActionsMod extends Feature {
     @Setting(name = "Rule 1 (trigger => reply)")
     public String rule1 = "";
@@ -37,7 +37,7 @@ public class AutoTextActionsMod extends Feature {
     private long pendingAt;
 
     public AutoTextActionsMod() {
-        super("autotextactions", "Auto Text Actions", "Set up actions that are triggered on received chat messages.", Category.CHAT);
+        super("autotextactions", "Auto Reply", "Send a message automatically when chat shows certain text.", Category.CHAT);
     }
 
     private String rule(int i) {

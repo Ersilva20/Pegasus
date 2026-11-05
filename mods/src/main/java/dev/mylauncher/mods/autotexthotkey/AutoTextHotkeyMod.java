@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent;
 import org.lwjgl.input.Keyboard;
 
 /** Five keys (set them in Controls) that each send a chat message or command. */
-@Mod(modid = "ml_autotexthotkey", name = "Auto Text Hot Key", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_autotexthotkey", name = "Chat Macros", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class AutoTextHotkeyMod extends Feature {
     @Setting(name = "Message 1")
     public String message1 = "/l";
@@ -30,8 +30,8 @@ public class AutoTextHotkeyMod extends Feature {
     private long last;
 
     public AutoTextHotkeyMod() {
-        super("autotexthotkey", "Auto Text Hot Key", "Set keys that send a command or chat message when pressed.", Category.CHAT);
-        for (int i = 0; i < keys.length; i++) keys[i] = MLCore.key("Auto Text " + (i + 1), Keyboard.KEY_NONE);
+        super("autotexthotkey", "Chat Macros", "Send a saved message or command with one key.", Category.CHAT);
+        for (int i = 0; i < keys.length; i++) keys[i] = MLCore.key("Chat Macro " + (i + 1), Keyboard.KEY_NONE);
     }
 
     private String message(int i) {

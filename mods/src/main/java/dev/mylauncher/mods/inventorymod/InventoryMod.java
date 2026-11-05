@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 
 /** Inventory quality-of-life: no potion shift and optionally no potion list beside the inventory. */
-@Mod(modid = "ml_inventorymod", name = "Inventory", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_inventorymod", name = "Inventory Extras", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class InventoryMod extends Feature {
     @Setting(name = "No Potion Shift", description = "Keep the inventory centered when you have effects")
     public boolean noShift = true;
@@ -20,7 +20,7 @@ public class InventoryMod extends Feature {
     public boolean hideEffects = false;
 
     public InventoryMod() {
-        super("inventorymod", "Inventory", "A collection of quality of life tweaks for the inventory.", Category.INVENTORY);
+        super("inventorymod", "Inventory Extras", "Stops the inventory moving sideways when you have potion effects.", Category.INVENTORY);
     }
 
     @SubscribeEvent

@@ -14,7 +14,7 @@ import org.lwjgl.input.Mouse;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-@Mod(modid = "ml_keystrokes", name = "Key Strokes", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_keystrokes", name = "Keystrokes", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class KeystrokesMod extends HudFeature {
     private static final int K = 22, G = 2;
 
@@ -40,7 +40,7 @@ public class KeystrokesMod extends HudFeature {
     private final Deque<Long> right = new ArrayDeque<Long>();
 
     public KeystrokesMod() {
-        super("keystrokes", "Key Strokes", "Displays when your movement, mouse or space bar is pressed.", Category.HUD, false, 0f, 0.7f);
+        super("keystrokes", "Keystrokes", "WASD, mouse buttons and space light up on screen as you press them.", Category.HUD, false, 0f, 0.7f);
     }
 
     @SubscribeEvent

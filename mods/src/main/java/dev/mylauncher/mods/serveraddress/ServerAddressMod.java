@@ -10,7 +10,7 @@ public class ServerAddressMod extends SimpleTextHud {
     public boolean singleplayer = false;
 
     public ServerAddressMod() {
-        super("serveraddress", "Server Address", "Displays the server you are currently connected to on the HUD.", 0.5f, 0.06f);
+        super("serveraddress", "Server Address", "Shows the address of the server you are playing on.", 0.5f, 0.06f);
     }
 
     @Override

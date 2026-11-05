@@ -12,13 +12,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraftforge.fml.common.Mod;
 
 /** Dropped items always face the camera like flat sprites instead of spinning. */
-@Mod(modid = "ml_items2d", name = "2D Items", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_items2d", name = "Flat Items", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class Items2dMod extends Feature implements Hooks.DroppedItemTransform {
     @Setting(name = "Keep Bobbing")
     public boolean bob = true;
 
     public Items2dMod() {
-        super("items2d", "2D Items", "Render dropped blocks and items in a 2D perspective, always facing you.", Category.VISUAL);
+        super("items2d", "Flat Items", "Dropped items are drawn as flat icons that always face you.", Category.VISUAL);
     }
 
     @Override

@@ -27,9 +27,9 @@ import java.io.File;
 
 /**
  * Adds [Open] [Copy] [Folder] buttons to the "Saved screenshot" chat message, and can copy every new
- * screenshot to the clipboard automatically. (Lunar's online upload is a Lunar service and isn't included.)
+ * screenshot to the clipboard automatically.
  */
-@Mod(modid = "ml_screenshot", name = "Screenshot Uploader", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_screenshot", name = "Screenshot Manager", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class ScreenshotMod extends Feature {
     @Setting(name = "Show Action Buttons")
     public boolean buttons = true;
@@ -39,7 +39,7 @@ public class ScreenshotMod extends Feature {
     private boolean registered;
 
     public ScreenshotMod() {
-        super("screenshot", "Screenshot Uploader", "Instantly open, copy or find your screenshots.", Category.UTILITY);
+        super("screenshot", "Screenshot Manager", "After a screenshot: open it, copy it or show it in its folder.", Category.UTILITY);
     }
 
     private File dir() {

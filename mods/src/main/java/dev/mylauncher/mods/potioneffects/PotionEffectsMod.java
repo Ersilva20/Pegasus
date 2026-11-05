@@ -34,7 +34,7 @@ public class PotionEffectsMod extends HudFeature {
     public boolean blink = true;
 
     public PotionEffectsMod() {
-        super("potioneffects", "Potion Effects", "Display your currently active potion effects on the HUD.", Category.HUD, false, 0f, 0.6f);
+        super("potioneffects", "Potion Effects", "Lists your active potion effects and the time left on each.", Category.HUD, false, 0f, 0.6f);
     }
 
     private List<PotionEffect> effects(boolean editing) {

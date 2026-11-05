@@ -15,7 +15,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /** Blocks dropping (Q / Ctrl+Q / dragging out) of the item types you list, or of any enchanted/named item. */
-@Mod(modid = "ml_dropprotection", name = "Item Drop Protection", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_dropprotection", name = "Drop Guard", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class DropProtectionMod extends Feature implements Hooks.DropItem, Hooks.SlotClick {
     @Setting(name = "Protected Items (comma separated ids)")
     public String items = "diamond_sword, diamond_pickaxe, bow, golden_apple, ender_pearl";
@@ -30,7 +30,7 @@ public class DropProtectionMod extends Feature implements Hooks.DropItem, Hooks.
     private long lastWarn;
 
     public DropProtectionMod() {
-        super("dropprotection", "Item Drop Protection", "Prevents specific items from being dropped from the inventory.", Category.INVENTORY);
+        super("dropprotection", "Drop Guard", "Stops chosen items from being dropped by accident.", Category.INVENTORY);
         onSettingsChanged();
     }
 
@@ -68,7 +68,7 @@ public class DropProtectionMod extends Feature implements Hooks.DropItem, Hooks.
     private boolean block() {
         if (warn && System.currentTimeMillis() - lastWarn > 1500) {
             lastWarn = System.currentTimeMillis();
-            MLCore.chat("That item is drop-protected. Disable Item Drop Protection to drop it.");
+            MLCore.chat("That item is drop-protected. Turn off Drop Guard to drop it.");
         }
         return true;
     }

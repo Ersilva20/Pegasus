@@ -42,7 +42,7 @@ public class CustomSkiesMod extends Feature {
     private final SkyRenderer renderer = new SkyRenderer();
 
     public CustomSkiesMod() {
-        super("customskies", "Custom Skies", "Replace the overworld sky with a custom sky texture.", Category.WORLD);
+        super("customskies", "Custom Skies", "Use the sky texture from your resource pack.", Category.WORLD);
     }
 
     private File skiesDir() {

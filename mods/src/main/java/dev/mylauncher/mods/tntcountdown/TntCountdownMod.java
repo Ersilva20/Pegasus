@@ -10,7 +10,7 @@ import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = "ml_tntcountdown", name = "TNT Countdown", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_tntcountdown", name = "TNT Timer", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class TntCountdownMod extends Feature {
     @Setting(name = "Decimals", min = 0, max = 2, step = 1)
     public int decimals = 2;
@@ -18,7 +18,7 @@ public class TntCountdownMod extends Feature {
     public float scale = 1.2f;
 
     public TntCountdownMod() {
-        super("tntcountdown", "TNT Countdown", "Displays the fuse countdown above TNT.", Category.WORLD);
+        super("tntcountdown", "TNT Timer", "Shows how long until lit TNT explodes.", Category.WORLD);
     }
 
     @SubscribeEvent

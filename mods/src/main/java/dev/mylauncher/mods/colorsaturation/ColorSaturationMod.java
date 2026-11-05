@@ -8,7 +8,7 @@ import net.minecraft.client.shader.ShaderGroup;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod(modid = "ml_colorsaturation", name = "Color Saturation", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_colorsaturation", name = "Vibrance", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class ColorSaturationMod extends Feature implements PostShaders.Uniforms {
     private static final ResourceLocation SHADER = new ResourceLocation("shaders/post/color_convolve.json");
 
@@ -16,7 +16,7 @@ public class ColorSaturationMod extends Feature implements PostShaders.Uniforms 
     public float saturation = 1.4f;
 
     public ColorSaturationMod() {
-        super("colorsaturation", "Color Saturation", "Change how colorful the game looks.", Category.VISUAL);
+        super("colorsaturation", "Vibrance", "Make the game's colors more vivid or more muted.", Category.VISUAL);
     }
 
     @Override

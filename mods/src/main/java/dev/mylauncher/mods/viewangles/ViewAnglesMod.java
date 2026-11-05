@@ -20,7 +20,7 @@ public class ViewAnglesMod extends TextHud {
     public boolean speed = false;
 
     public ViewAnglesMod() {
-        super("viewangles", "View Angles", "Display your yaw and pitch, with optional speed, and altitude.", Category.HUD, false, 0f, 0.5f);
+        super("viewangles", "View Angles", "Shows your yaw and pitch, plus speed and height if you want.", Category.HUD, false, 0f, 0.5f);
         fixedWidth = false;
     }
 

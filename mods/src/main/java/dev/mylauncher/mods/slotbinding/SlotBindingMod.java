@@ -25,7 +25,7 @@ import java.util.Map;
  * Bind an inventory slot to a hotbar slot: hover an inventory slot, press the bind key, then hover a
  * hotbar slot and press it again. Afterwards shift-clicking the bound slot swaps it with its hotbar slot.
  */
-@Mod(modid = "ml_slotbinding", name = "Slot Binding", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_slotbinding", name = "Slot Swap", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class SlotBindingMod extends Feature implements Hooks.SlotClick {
     public static class Data {
         public Map<Integer, Integer> bindings = new HashMap<Integer, Integer>();
@@ -39,7 +39,7 @@ public class SlotBindingMod extends Feature implements Hooks.SlotClick {
     private int pending = -1;
 
     public SlotBindingMod() {
-        super("slotbinding", "Slot Binding", "Helps the user quickly manage their hotbar.", Category.INVENTORY);
+        super("slotbinding", "Slot Swap", "Link an inventory slot to a hotbar slot, then shift-click to swap them.", Category.INVENTORY);
     }
 
     private Data data() {

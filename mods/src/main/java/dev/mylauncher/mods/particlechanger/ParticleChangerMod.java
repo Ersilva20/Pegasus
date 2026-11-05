@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /** Extra hit particles: multiply crits, always show sharpness sparks, etc. Purely visual. */
-@Mod(modid = "ml_particlechanger", name = "Particle Changer", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_particlechanger", name = "Particle Tweaks", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class ParticleChangerMod extends Feature {
     @Setting(name = "Multiplier", min = 1, max = 10, step = 1)
     public int multiplier = 2;
@@ -23,7 +23,7 @@ public class ParticleChangerMod extends Feature {
     public boolean onlyLiving = true;
 
     public ParticleChangerMod() {
-        super("particlechanger", "Particle Changer", "Change how particles look and work.", Category.VISUAL);
+        super("particlechanger", "Particle Tweaks", "Change how many particles you see and how they look.", Category.VISUAL);
     }
 
     @SubscribeEvent

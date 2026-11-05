@@ -1,6 +1,6 @@
 package dev.mylauncher.core.gui;
 
-/** Colors used by every Pegasus Core screen (dark, Lunar-like). */
+/** Colors used by every Pegasus Core screen (dark theme). */
 public final class Theme {
     private Theme() {
     }

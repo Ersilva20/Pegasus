@@ -16,7 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /** Replaces names everywhere text is drawn (chat, tab, nametags, scoreboard) and can hide skins. */
-@Mod(modid = "ml_nickhider", name = "Nick Hider", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_nickhider", name = "Streamer Mode", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class NickHiderMod extends Feature implements Hooks.TextFilter, Hooks.SkinOverride {
     @Setting(name = "Your Displayed Name")
     public String nick = "You";
@@ -33,7 +33,7 @@ public class NickHiderMod extends Feature implements Hooks.TextFilter, Hooks.Ski
     private int ticks;
 
     public NickHiderMod() {
-        super("nickhider", "Nick Hider", "Allows you to hide skins and usernames for yourself or others.", Category.UTILITY);
+        super("nickhider", "Streamer Mode", "Hide your own name and skin, or other players', on your screen.", Category.UTILITY);
     }
 
     @Override

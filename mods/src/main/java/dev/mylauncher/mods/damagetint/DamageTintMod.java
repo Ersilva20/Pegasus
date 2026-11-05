@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.lwjgl.opengl.GL11;
 
 /** Red vignette at the screen edges that gets stronger as your health drops. */
-@Mod(modid = "ml_damagetint", name = "Damage Tint", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_damagetint", name = "Low Health Tint", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class DamageTintMod extends Feature {
     @Setting(name = "Start Below Health", min = 1, max = 20, step = 1)
     public int threshold = 10;
@@ -25,7 +25,7 @@ public class DamageTintMod extends Feature {
     public int edge = 25;
 
     public DamageTintMod() {
-        super("damagetint", "Damage Tint", "Adds a tint to the screen when you are low on health.", Category.PVP);
+        super("damagetint", "Low Health Tint", "Tints the screen red when your health gets low.", Category.PVP);
     }
 
     @SubscribeEvent

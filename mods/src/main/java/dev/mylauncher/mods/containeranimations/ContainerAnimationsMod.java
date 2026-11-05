@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /** Containers pop open with a short scale animation. */
-@Mod(modid = "ml_containeranimations", name = "Container Animations", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_containeranimations", name = "Menu Animations", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class ContainerAnimationsMod extends Feature {
     public enum Type { SCALE, SLIDE_UP, SLIDE_DOWN }
 
@@ -24,7 +24,7 @@ public class ContainerAnimationsMod extends Feature {
     private boolean pushed;
 
     public ContainerAnimationsMod() {
-        super("containeranimations", "Container Animations", "Animate container screens.", Category.INVENTORY);
+        super("containeranimations", "Menu Animations", "Chests and inventories open with an animation.", Category.INVENTORY);
     }
 
     @SubscribeEvent

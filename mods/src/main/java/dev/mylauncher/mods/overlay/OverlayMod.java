@@ -18,7 +18,7 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import java.lang.reflect.Method;
 
 /** Fire / water / pumpkin / portal / block overlay tweaks. */
-@Mod(modid = "ml_overlay", name = "Overlay", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_overlay", name = "Screen Overlays", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class OverlayMod extends Feature {
     public enum Fire { NORMAL, LOWERED, HIDDEN }
 
@@ -39,7 +39,7 @@ public class OverlayMod extends Feature {
     private boolean drawingFire;
 
     public OverlayMod() {
-        super("overlay", "Overlay", "Configure various texture overlays, tweaks, and modifiers.", Category.VISUAL);
+        super("overlay", "Screen Overlays", "Shrink or hide the fire, pumpkin, water and other screen overlays.", Category.VISUAL);
     }
 
     @SubscribeEvent

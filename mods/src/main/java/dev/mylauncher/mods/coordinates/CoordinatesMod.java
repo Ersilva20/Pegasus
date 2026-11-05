@@ -33,7 +33,7 @@ public class CoordinatesMod extends TextHud {
     public int decimals = 0;
 
     public CoordinatesMod() {
-        super("coordinates", "Coordinates", "Displays your coordinates on the HUD.", Category.HUD, false, 0f, 0.3f);
+        super("coordinates", "Coordinates", "Shows your X, Y and Z position.", Category.HUD, false, 0f, 0.3f);
         fixedWidth = false;
     }
 

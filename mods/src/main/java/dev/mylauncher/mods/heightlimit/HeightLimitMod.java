@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /** Shows how many blocks you can still build up and draws a plane at the limit. */
-@Mod(modid = "ml_heightlimit", name = "Height Limit", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_heightlimit", name = "Build Limit", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class HeightLimitMod extends SimpleTextHud {
     @Setting(name = "Height Limit (Y)", description = "256 = vanilla build limit; set the map limit for minigames", min = 1, max = 256, step = 1)
     public int limit = 256;
@@ -23,7 +23,7 @@ public class HeightLimitMod extends SimpleTextHud {
     public int radius = 6;
 
     public HeightLimitMod() {
-        super("heightlimit", "Height Limit", "Block overlay and HUD display to help you build up to map height limits", 0.5f, 0.7f);
+        super("heightlimit", "Build Limit", "Warns you when you get close to the highest block you can place.", 0.5f, 0.7f);
     }
 
     @Override

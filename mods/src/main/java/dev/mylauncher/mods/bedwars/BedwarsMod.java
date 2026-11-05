@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLNetworkEvent;
 
 /** Resource counter plus kills / final kills / beds broken for the current Bed Wars game. */
-@Mod(modid = "ml_bedwars", name = "Hypixel Bedwars", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_bedwars", name = "Bed Wars Helper", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class BedwarsMod extends HudFeature {
     private static final Item[] RESOURCES = {Items.iron_ingot, Items.gold_ingot, Items.diamond, Items.emerald};
 
@@ -29,7 +29,7 @@ public class BedwarsMod extends HudFeature {
     private int kills, finals, beds;
 
     public BedwarsMod() {
-        super("bedwars", "Hypixel Bedwars", "Various enhancements to assist you when playing Hypixel Bedwars", Category.HYPIXEL, false, 0f, 0.4f);
+        super("bedwars", "Bed Wars Helper", "Extra info on screen for Hypixel Bed Wars.", Category.HYPIXEL, false, 0f, 0.4f);
     }
 
     @SubscribeEvent

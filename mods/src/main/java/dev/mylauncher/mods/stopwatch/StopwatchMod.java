@@ -24,7 +24,7 @@ public class StopwatchMod extends SimpleTextHud {
     private long runningSince = -1;
 
     public StopwatchMod() {
-        super("stopwatch", "Stopwatch", "Adds stopwatches and timers to the HUD.", 1f, 0.18f);
+        super("stopwatch", "Stopwatch", "A stopwatch and a countdown timer on your HUD.", 1f, 0.18f);
     }
 
     @SubscribeEvent

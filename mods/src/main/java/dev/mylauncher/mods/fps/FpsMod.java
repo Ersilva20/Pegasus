@@ -11,7 +11,7 @@ public class FpsMod extends SimpleTextHud {
     public boolean suffix = true;
 
     public FpsMod() {
-        super("fps", "FPS", "Display your FPS on the HUD.", 0f, 0f);
+        super("fps", "FPS", "Shows your frames per second.", 0f, 0f);
     }
 
     @Override

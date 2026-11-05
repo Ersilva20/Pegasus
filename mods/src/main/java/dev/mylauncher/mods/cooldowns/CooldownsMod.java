@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Client-side cooldown timers. Lunar gets cooldowns from servers through its own API (Apollo);
+ * Client-side cooldown timers (servers do not send them in 1.8.9);
  * here you list items and their cooldown, e.g. "ender_pearl:15, golden_apple:5", and a timer
  * starts when you use one.
  */
@@ -34,7 +34,7 @@ public class CooldownsMod extends HudFeature {
     private final Map<Item, Long> active = new LinkedHashMap<Item, Long>();
 
     public CooldownsMod() {
-        super("cooldowns", "Cooldowns", "Displays items or abilities that are on cooldown on the HUD.", Category.PVP, false, 0.5f, 0.55f);
+        super("cooldowns", "Cooldowns", "Timers for items you just used, like ender pearls and golden apples.", Category.PVP, false, 0.5f, 0.55f);
         onSettingsChanged();
     }
 

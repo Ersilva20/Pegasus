@@ -38,7 +38,7 @@ public class InventorySearchMod extends Feature {
     private String text = "";
 
     public InventorySearchMod() {
-        super("inventorysearch", "Inventory Search", "Adds a search bar to inventories.", Category.INVENTORY);
+        super("inventorysearch", "Inventory Search", "A search box that highlights matching items in containers.", Category.INVENTORY);
     }
 
     @SubscribeEvent

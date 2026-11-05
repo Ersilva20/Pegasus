@@ -6,16 +6,15 @@ const zlib = require('zlib');
 const { paths, ensureDir } = require('./paths');
 
 /**
- * Imports your existing Minecraft / Lunar Client 1.8.9 setup into a Pegasus instance:
- * game options + keybinds, servers, 1.8 resource packs, screenshots and the Lunar HUD/mod layout.
+ * Imports your existing Minecraft 1.8.9 setup into a Pegasus instance:
+ * game options + keybinds, servers, 1.8 resource packs and screenshots.
  * Everything it replaces is copied to <instance>/import-backup/<date> first.
  */
 
 const HOME = os.homedir();
 const APPDATA = process.env.APPDATA || path.join(HOME, 'AppData', 'Roaming');
-const MINECRAFT = path.join(APPDATA, '.minecraft'); // Lunar 1.8.9 plays from here too
+const MINECRAFT = path.join(APPDATA, '.minecraft');
 const PROFILES = path.join(HOME, 'Documents', 'Minecarft', 'Profiles');
-const LUNAR = path.join(HOME, '.lunarclient', 'settings', 'game');
 
 // ---------------------------------------------------------------- NBT (uncompressed, servers.dat)
 
@@ -94,11 +93,6 @@ function readOptions(file) {
   const out = new Map();
   if (!fs.existsSync(file)) return out;
   const text = fs.readFileSync(file, 'utf8');
-  if (text.trim().startsWith('{')) {
-    // Lunar's optionsLC.txt is the same data as JSON.
-    for (const [k, v] of Object.entries(JSON.parse(text))) out.set(k, String(v));
-    return out;
-  }
   for (const line of text.split(/\r?\n/)) {
     // Keybind names can contain ':' ("Media: Play / Pause"), their value never does.
     const i = line.startsWith('key_') ? line.lastIndexOf(':') : line.indexOf(':');
@@ -107,16 +101,11 @@ function readOptions(file) {
   return out;
 }
 
-// Lunar-only option names, and Lunar keybinds that have a Pegasus equivalent.
-const LUNAR_ONLY = new Set(['lastLaunchedVersion']);
-const LUNAR_KEYS = { 'key_Mod Menu': 'key_Open Mod Menu' };
-const LUNAR_KEY_RE = /^key_(Waypoint Menu|Emote Wheel|Spray Wheel|Spray Snap Keybind|Sprint Keybind|Sneak Keybind|Toggle Chat Visibility)$/;
+// Names saved by other clients that vanilla and Pegasus don't use.
+const SKIP = new Set(['lastLaunchedVersion']);
 
 function mergeOptions(target, source) {
-  for (const [k, v] of source) {
-    if (LUNAR_ONLY.has(k) || LUNAR_KEY_RE.test(k)) continue;
-    target.set(LUNAR_KEYS[k] || k, v);
-  }
+  for (const [k, v] of source) if (!SKIP.has(k)) target.set(k, v);
   return target;
 }
 
@@ -189,119 +178,9 @@ function copyRecursive(from, to) {
   }
 }
 
-// ---------------------------------------------------------------- Lunar mods -> Pegasus mods
-
-const LUNAR_MODS = {
-  FPS: 'fps', CPS: 'cps', VIEW_ANGLES: 'viewangles', ZOOM: 'zoom', HYPIXEL_MOD: 'hypixelmods',
-  HYPIXEL_BEDWARS: 'bedwars', HEIGHT_LIMIT: 'heightlimit', QUICKPLAY: 'quickplay', ARMORSTATUS: 'armorstatus',
-  KEYSTROKES: 'keystrokes', COORDINATES: 'coordinates', DAY_COUNTER: 'daycounter', CROSSHAIR: 'crosshair',
-  POTION_EFFECTS: 'potioneffects', DIRECTION_HUD: 'directionhud', WAYPOINTS: 'waypoints', HIT_COLOR: 'hitcolor',
-  SCOREBOARD: 'scoreboard', TITLES: 'titles', ITEM_COUNTER: 'itemcounter', POTION_COUNTER: 'potioncounter',
-  PING: 'ping', MOTION_BLUR: 'motionblur', PACK_ORGANIZER: 'packorganizer', CHAT: 'chat', TAB: 'tabeditor',
-  NAMETAG: 'nametags', SCROLLABLE_TOOLTIPS: 'scrolltooltips', PARTICLE_CHANGER: 'particlechanger',
-  NICK_HIDER: 'nickhider', COOLDOWNS: 'cooldowns', WORLDEDIT_CUI: 'worldeditcui', CLOCK: 'clock',
-  STOPWATCH: 'stopwatch', PLAYTIME: 'playtime', MEMORY: 'memory', COMBO: 'combo', REACH_DISPLAY: 'reachdisplay',
-  TIME_CHANGER: 'timechanger', CUSTOM_SKIES: 'customskies', SERVER_ADDRESS: 'serveraddress', SATURATION: 'saturation',
-  COLOR_SATURATION: 'colorsaturation', ITEM_PHYSICS: 'itemphysics', TNT_COUNTDOWN: 'tntcountdown',
-  ITEM_TRACKER: 'itemtracker', SHINY_POTS: 'shinypots', GLINT_COLORIZER: 'glintcolorizer', MOMENTUM: 'momentum',
-  BLOCK_OUTLINE: 'blockoutline', SCREENSHOT: 'screenshot', FOV: 'fov', FOG: 'fog', AUTO_TEXT_HOTKEY: 'autotexthotkey',
-  AUTO_TEXT_ACTIONS: 'autotextactions', MUMBLE_LINK: 'mumblelink', '2D_ITEMS': 'items2d', BOSSBAR: 'bossbar',
-  FREELOOK: 'freelook', PVP_INFO: 'pvpinfo', MARKERS: 'markers', SNAPLOOK: 'snaplook', TEAM_VIEW: 'teamview',
-  PACK_DISPLAY: 'packdisplay', MENU_BLUR: 'menublur', MINIMAP: 'minimap', HITBOX: 'hitbox', LIGHTING: 'lighting',
-  WEATHER_CHANGER: 'weatherchanger', CHUNK_BORDERS: 'chunkborders', SOUND_CHANGER: 'bettersounds', WAILA: 'waila',
-  HURT_CAM: 'hurtcam', DAMAGE_TINT: 'damagetint', MOB_SIZE: 'mobsize', ITEM_CUSTOMIZER: 'itemcustomizer',
-  HORSE_STATS: 'horsestats', OVERLAY_MOD: 'overlay', ACTION_BAR: 'actionbar', LIGHT_OVERLAY: 'lightoverlay',
-  KILL_SOUNDS: 'killsounds', INVENTORY_MOD: 'inventorymod', F3_DISPLAY: 'f3display', GUI_SCALE: 'guiscale',
-  KNOCKBACK_TRAINER: 'knockbacktrainer', HYPIXEL_STATS: 'hypixelstats', MEDIA_PLAYER: 'mediaplayer',
-  ONE_SEVEN_VISUALS: 'oldvisuals',
-};
-
-// Text HUD options with the same meaning in both clients.
-const TEXT_OPTIONS = ['textShadow', 'brackets', 'background', 'rightClick'];
-
-/**
- * Lunar stores a HUD position as an anchor ("bottomRight", "topLeft", "bottomCenterRight"...) plus an offset
- * in GUI pixels; Pegasus stores 0..1 of the free screen space. The offset is converted for a 1080p screen at
- * the given GUI scale, close enough for anything near an edge.
- */
-function lunarPosition(m, guiScale) {
-  if (!m.position) return null;
-  const scale = guiScale > 0 ? guiScale : 2;
-  const freeW = 1920 / scale - 60, freeH = 1080 / scale - 20;
-  const pos = m.position.toLowerCase();
-  const x = Number(m.x) || 0, y = Number(m.y) || 0;
-  let rx, ry;
-  if (pos.includes('center') || pos === 'middle') rx = 0.5 + x / freeW;
-  else if (pos.includes('right')) rx = 1 - Math.abs(x) / freeW;
-  else rx = x / freeW;
-  if (pos.startsWith('bottom')) ry = 1 - Math.abs(y) / freeH;
-  else if (pos.startsWith('middle') || pos === 'center') ry = 0.5 + y / freeH;
-  else ry = y / freeH;
-  const clamp = (v) => Math.round(Math.max(0, Math.min(1, v)) * 1000) / 1000;
-  return { x: clamp(rx), y: clamp(ry) };
-}
-
-function activeLunarProfile() {
-  try {
-    const list = JSON.parse(fs.readFileSync(path.join(LUNAR, 'profile_manager.json'), 'utf8'));
-    const p = list.find((x) => x.active) || list.find((x) => x.default);
-    if (p) return p.name;
-  } catch (e) {
-    // no Lunar install
-  }
-  return 'Default';
-}
-
-function lunarConfigs(guiScale) {
-  const file = path.join(LUNAR, activeLunarProfile(), 'mods.json');
-  if (!fs.existsSync(file)) return {};
-  const lunar = JSON.parse(fs.readFileSync(file, 'utf8'));
-  const out = {};
-  for (const [key, id] of Object.entries(LUNAR_MODS)) {
-    const m = lunar[key];
-    if (!m || typeof m !== 'object') continue;
-    const cfg = { settings: {} };
-    if (typeof m.enabled === 'boolean') cfg.enabled = m.enabled;
-    const opts = m.options || {};
-    for (const o of TEXT_OPTIONS) if (typeof opts[o] === 'boolean') cfg.settings[o] = opts[o];
-    const hud = lunarPosition(m, guiScale);
-    if (hud) cfg.hud = hud;
-    out[id] = cfg;
-  }
-  // Mods whose Lunar options don't map 1:1.
-  const k = lunar.KEYSTROKES;
-  if (k && out.keystrokes && !out.keystrokes.hud) {
-    const w = k.KEYSTROKE_KEY_W;
-    if (w && w.position) out.keystrokes.hud = lunarPosition({ position: w.position, x: 0, y: 0 }, guiScale);
-  }
-  const boss = lunar.BOSSBAR && lunar.BOSSBAR.options;
-  if (boss && out.bossbar) {
-    if (typeof boss.renderBar === 'boolean') out.bossbar.settings.showBar = boss.renderBar;
-    if (typeof boss.renderText === 'boolean') out.bossbar.settings.showName = boss.renderText;
-    if (out.bossbar.enabled === undefined) out.bossbar.enabled = true; // Lunar's boss bar mod is on by default
-  }
-  const ch = lunar.CROSSHAIR;
-  if (ch && out.crosshair && ch.CROSSHAIR_NORMAL && typeof ch.CROSSHAIR_NORMAL.enabled === 'boolean') {
-    out.crosshair.enabled = ch.CROSSHAIR_NORMAL.enabled;
-  }
-  return out;
-}
-
-function writeFeatureConfig(dir, id, cfg) {
-  const file = path.join(dir, id + '.json');
-  let cur = {};
-  try { cur = JSON.parse(fs.readFileSync(file, 'utf8')); } catch (e) { /* new file */ }
-  if (cfg.enabled !== undefined) cur.enabled = cfg.enabled;
-  cur.settings = Object.assign(cur.settings || {}, cfg.settings);
-  if (cfg.hud) cur.hud = cfg.hud;
-  if (cur.enabled === undefined && !Object.keys(cur.settings).length && !cur.hud) return false;
-  fs.writeFileSync(file, JSON.stringify(cur, null, 2));
-  return true;
-}
-
 // ---------------------------------------------------------------- import
 
-/** Folders to read: .minecraft (vanilla launcher + Lunar 1.8.9) first, then the 1.8.9 Forge profiles. */
+/** Folders to read: .minecraft first, then the 1.8.9 Forge profiles. */
 function sources() {
   const list = [];
   if (fs.existsSync(MINECRAFT)) list.push({ name: '.minecraft', dir: MINECRAFT, main: true });
@@ -323,17 +202,15 @@ function run(instance) {
     ensureDir(backup);
     fs.copyFileSync(file, path.join(backup, path.basename(file)));
   };
-  const report = { options: false, servers: 0, packs: [], skippedPacks: [], screenshots: 0, mods: 0, fullscreen: null };
+  const report = { options: false, servers: 0, packs: [], skippedPacks: [], screenshots: 0, fullscreen: null };
   const src = sources();
   const main = src.find((s) => s.main);
 
-  // Options + keybinds: Lunar's file is the newest copy when it exists.
+  // Options + keybinds.
   const optionsFile = path.join(game, 'options.txt');
   let options = readOptions(optionsFile);
   if (main) {
-    const lc = path.join(main.dir, 'optionsLC.txt');
-    const from = fs.existsSync(lc) ? lc : path.join(main.dir, 'options.txt');
-    const imported = readOptions(from);
+    const imported = readOptions(path.join(main.dir, 'options.txt'));
     if (imported.size) {
       save(optionsFile);
       options = mergeOptions(options, imported);
@@ -396,14 +273,6 @@ function run(instance) {
     }
   }
 
-  // Lunar HUD layout and which mods are on.
-  const cfgDir = ensureDir(path.join(game, 'config', 'pegasus'));
-  const configs = lunarConfigs(Number(options.get('guiScale')));
-  for (const [id, cfg] of Object.entries(configs)) {
-    const file = path.join(cfgDir, id + '.json');
-    if (fs.existsSync(file)) { ensureDir(path.join(backup, 'pegasus')); fs.copyFileSync(file, path.join(backup, 'pegasus', id + '.json')); }
-    if (writeFeatureConfig(cfgDir, id, cfg)) report.mods++;
-  }
   report.backup = fs.existsSync(backup) ? backup : null;
   return report;
 }
@@ -415,4 +284,4 @@ function hasOld(dir) {
   return opts.size > 0;
 }
 
-module.exports = { run, sources, readNbt, writeNbt, packFormat, lunarPosition };
+module.exports = { run, sources, readNbt, writeNbt, packFormat };

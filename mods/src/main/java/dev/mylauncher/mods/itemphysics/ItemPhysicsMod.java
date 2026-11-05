@@ -17,7 +17,7 @@ public class ItemPhysicsMod extends Feature implements Hooks.DroppedItemTransfor
     public float speed = 1.5f;
 
     public ItemPhysicsMod() {
-        super("itemphysics", "Item Physics", "Replaces ground items with ones that have physics.", Category.VISUAL);
+        super("itemphysics", "Item Physics", "Dropped items fall over and lie flat instead of floating and spinning.", Category.VISUAL);
     }
 
     @Override

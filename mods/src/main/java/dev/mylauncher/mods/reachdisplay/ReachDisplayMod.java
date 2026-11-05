@@ -19,7 +19,7 @@ public class ReachDisplayMod extends SimpleTextHud {
     private long lastHit;
 
     public ReachDisplayMod() {
-        super("reachdisplay", "Reach Display", "Display how far away you attacked another player from.", 0f, 0.24f);
+        super("reachdisplay", "Reach Display", "Shows the distance of your last hit on a player or mob.", 0f, 0.24f);
     }
 
     @SubscribeEvent

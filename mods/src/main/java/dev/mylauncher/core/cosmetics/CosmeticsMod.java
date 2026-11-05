@@ -86,6 +86,11 @@ public class CosmeticsMod extends Feature implements Hooks.SkinOverride {
     @Override
     public void onSettingsChanged() {
         nextFetch = 0;
+        // A cape from a folder you deleted falls back to the Pegasus cape.
+        if (cape != null && cape.startsWith("file:")
+                && Catalog.capeFile(new java.io.File(mc.mcDataDir, "config/pegasus"), cape) == null) {
+            cape = "pegasus";
+        }
     }
 
     @Override

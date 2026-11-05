@@ -12,7 +12,7 @@ public class MomentumMod extends SimpleTextHud {
     public int decimals = 2;
 
     public MomentumMod() {
-        super("momentum", "Momentum", "Shows your current velocity", 0f, 0.42f);
+        super("momentum", "Momentum", "Shows how fast you are moving, in blocks per second.", 0f, 0.42f);
     }
 
     @Override

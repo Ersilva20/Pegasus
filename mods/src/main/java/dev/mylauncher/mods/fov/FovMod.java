@@ -10,7 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /** Control the dynamic FOV from sprinting, speed/slowness potions, flying and bows. */
-@Mod(modid = "ml_fov", name = "FOV Changer", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_fov", name = "FOV Control", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class FovMod extends Feature {
     @Setting(name = "Sprinting Multiplier", min = 1, max = 1.5, step = 0.01)
     public float sprint = 1.15f;
@@ -24,7 +24,7 @@ public class FovMod extends Feature {
     public boolean bow = true;
 
     public FovMod() {
-        super("fov", "FOV Changer", "Allows you to customize your field of view for different potion or speed states.", Category.VISUAL);
+        super("fov", "FOV Control", "Control how sprinting, potions, flying and bows change your field of view.", Category.VISUAL);
     }
 
     @SubscribeEvent

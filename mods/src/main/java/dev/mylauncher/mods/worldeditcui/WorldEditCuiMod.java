@@ -35,7 +35,7 @@ public class WorldEditCuiMod extends Feature {
     private int[] p1, p2;
 
     public WorldEditCuiMod() {
-        super("worldeditcui", "WorldEdit CUI", "See your WorldEdit selection in-game in real time.", Category.WORLD);
+        super("worldeditcui", "WorldEdit CUI", "Shows your WorldEdit selection in the world.", Category.WORLD);
     }
 
     @Override

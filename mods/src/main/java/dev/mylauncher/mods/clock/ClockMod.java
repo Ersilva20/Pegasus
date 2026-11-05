@@ -17,7 +17,7 @@ public class ClockMod extends SimpleTextHud {
     public boolean date = false;
 
     public ClockMod() {
-        super("clock", "Clock", "Display the current time on the HUD.", 1f, 0f);
+        super("clock", "Clock", "Shows the real-world time.", 1f, 0f);
     }
 
     @Override

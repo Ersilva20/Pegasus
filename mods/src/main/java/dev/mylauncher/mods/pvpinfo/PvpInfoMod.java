@@ -18,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /** Melee accuracy, health info and projectile stats for the current session. */
-@Mod(modid = "ml_pvpinfo", name = "PvP Info", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_pvpinfo", name = "Fight Stats", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class PvpInfoMod extends TextHud {
     @Setting(name = "Melee Stats")
     public boolean melee = true;
@@ -34,7 +34,7 @@ public class PvpInfoMod extends TextHud {
     private boolean wasUsingBow;
 
     public PvpInfoMod() {
-        super("pvpinfo", "PvP Info", "Displays various PvP statistics", Category.PVP, false, 1f, 0.4f);
+        super("pvpinfo", "Fight Stats", "Accuracy, damage and health numbers from your fights.", Category.PVP, false, 1f, 0.4f);
         fixedWidth = false;
     }
 

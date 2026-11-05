@@ -37,7 +37,7 @@ public class ChatMod extends Feature {
     private int repeat = 1;
 
     public ChatMod() {
-        super("chat", "Chat", "Customize your chat options to your liking.", Category.CHAT);
+        super("chat", "Chat", "Stack repeated messages, add timestamps, change the background and keep more history.", Category.CHAT);
     }
 
     @Override

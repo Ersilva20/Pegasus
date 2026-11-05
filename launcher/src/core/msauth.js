@@ -1,7 +1,7 @@
 'use strict';
 /**
  * Microsoft account login for Minecraft (official chain):
- *   Microsoft OAuth (login window like Lunar's, or device code) -> Xbox Live -> XSTS -> Minecraft token -> profile.
+ *   Microsoft OAuth (login window, or device code) -> Xbox Live -> XSTS -> Minecraft token -> profile.
  * Needs YOUR Azure app's client ID (Settings > Advanced). New apps must also be approved by Microsoft
  * for the Minecraft API; until then the Minecraft step returns HTTP 403.
  */

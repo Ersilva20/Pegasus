@@ -22,7 +22,7 @@ public class ComboMod extends SimpleTextHud {
     private int lastPlayerHurt;
 
     public ComboMod() {
-        super("combo", "Combo Counter", "Displays how often you have hit another player within a certain amount of time on the HUD.", 0f, 0.36f);
+        super("combo", "Combo Counter", "Counts the hits you land in a row without being hit back.", 0f, 0.36f);
     }
 
     @SubscribeEvent

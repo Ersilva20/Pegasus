@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.Mod;
 
 /** First-person held item position/size and dropped item size. */
-@Mod(modid = "ml_itemcustomizer", name = "Item Customizer", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_itemcustomizer", name = "Held Item Tweaks", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class ItemCustomizerMod extends Feature implements Hooks.FirstPersonTransform, Hooks.DroppedItemScale {
     @Setting(name = "Held Item X Offset", min = -1, max = 1, step = 0.02)
     public float x = 0f;
@@ -26,7 +26,7 @@ public class ItemCustomizerMod extends Feature implements Hooks.FirstPersonTrans
     public float droppedScale = 1f;
 
     public ItemCustomizerMod() {
-        super("itemcustomizer", "Item Customizer", "Allows you to customize the rendering/animation of held and dropped items.", Category.VISUAL);
+        super("itemcustomizer", "Held Item Tweaks", "Change the size and position of held and dropped items.", Category.VISUAL);
     }
 
     @Override

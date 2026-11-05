@@ -54,7 +54,7 @@ public class CrosshairMod extends Feature {
     private boolean[][] raster;
 
     public CrosshairMod() {
-        super("crosshair", "Crosshair", "Replace the default Minecraft crosshair with a customizable crosshair.", Category.VISUAL);
+        super("crosshair", "Crosshair", "Choose a crosshair style or draw your own pixel by pixel.", Category.VISUAL);
     }
 
     @Override

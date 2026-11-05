@@ -25,7 +25,7 @@ import java.util.Set;
  * Hover a slot of your inventory and press L to lock it. Locked slots can't be clicked, shift-clicked,
  * swapped or dropped (Q), so you can't lose that item by accident.
  */
-@Mod(modid = "ml_slotlocking", name = "Slot Locking", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_slotlocking", name = "Slot Lock", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class SlotLockingMod extends Feature implements Hooks.SlotClick, Hooks.DropItem {
     public static class Data {
         public Set<Integer> locked = new HashSet<Integer>();
@@ -38,7 +38,7 @@ public class SlotLockingMod extends Feature implements Hooks.SlotClick, Hooks.Dr
     private Data data;
 
     public SlotLockingMod() {
-        super("slotlocking", "Slot Locking", "Keeps your precious items safe.", Category.INVENTORY);
+        super("slotlocking", "Slot Lock", "Lock slots so their items cannot be dropped or moved by accident.", Category.INVENTORY);
     }
 
     private Data data() {

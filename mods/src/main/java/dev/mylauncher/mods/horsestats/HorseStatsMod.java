@@ -19,7 +19,7 @@ public class HorseStatsMod extends Feature {
     public int decimals = 2;
 
     public HorseStatsMod() {
-        super("horsestats", "Horse Stats", "Display the stats of the horse you are riding in the horse's inventory.", Category.UTILITY);
+        super("horsestats", "Horse Stats", "Shows the speed, jump height and health of horses.", Category.UTILITY);
     }
 
     /** Converts jump strength to blocks (fitted formula used by the community). */

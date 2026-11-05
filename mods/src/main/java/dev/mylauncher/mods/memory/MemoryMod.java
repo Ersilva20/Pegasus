@@ -12,7 +12,7 @@ public class MemoryMod extends SimpleTextHud {
     public Format format = Format.BOTH;
 
     public MemoryMod() {
-        super("memory", "Memory Usage", "Displays your total and free memory usage.", 0f, 0.12f);
+        super("memory", "Memory Usage", "Shows how much RAM the game is using.", 0f, 0.12f);
     }
 
     @Override

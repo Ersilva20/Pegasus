@@ -25,7 +25,7 @@ public class TimeChangerMod extends Feature {
     private long cycle;
 
     public TimeChangerMod() {
-        super("timechanger", "Time Changer", "Customize the current time of day to a fixed position.", Category.WORLD);
+        super("timechanger", "Time Changer", "Choose the time of day you see. Only changes your screen.", Category.WORLD);
     }
 
     private long target() {

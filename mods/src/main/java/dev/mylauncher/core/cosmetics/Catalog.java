@@ -62,7 +62,7 @@ public final class Catalog {
 
     /**
      * Your own capes: PNG files in .minecraft/config/pegasus/cosmetics/capes (standard 64x32 cape layout or any
-     * 2:1 size). Each sub-folder is a "pack" with its own tab in the Wardrobe (e.g. capes/lunar, capes/mojang).
+     * 2:1 size). Each sub-folder is a "pack" with its own tab in the Wardrobe (e.g. capes/friends).
      */
     public static File customCapeDir(File configDir) {
         File d = new File(configDir, "cosmetics/capes");

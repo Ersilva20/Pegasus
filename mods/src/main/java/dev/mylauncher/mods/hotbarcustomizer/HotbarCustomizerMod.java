@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /** Move the hotbar anywhere (drag it in the HUD editor) and choose horizontal or vertical layout. */
-@Mod(modid = "ml_hotbarcustomizer", name = "Hotbar Customizer", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_hotbarcustomizer", name = "Hotbar Layout", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class HotbarCustomizerMod extends HudFeature {
     private static final ResourceLocation WIDGETS = new ResourceLocation("textures/gui/widgets.png");
     private static final Gui GUI = new Gui();
@@ -29,7 +29,7 @@ public class HotbarCustomizerMod extends HudFeature {
     public int minimalSelected = 0xA0FFFFFF;
 
     public HotbarCustomizerMod() {
-        super("hotbarcustomizer", "Hotbar Customizer", "Move the hotbar anywhere on the screen, and change its layout.", Category.HUD, false, 0.5f, 1f);
+        super("hotbarcustomizer", "Hotbar Layout", "Move the hotbar anywhere and change its shape.", Category.HUD, false, 0.5f, 1f);
     }
 
     @SubscribeEvent

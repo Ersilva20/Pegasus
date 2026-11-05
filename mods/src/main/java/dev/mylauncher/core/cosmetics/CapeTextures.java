@@ -19,8 +19,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 /**
- * Original Pegasus capes, painted in code as HD pixel art (512x256 texture = 80x128 visible canvas, the same
- * class of resolution Lunar uses). Standard cape layout, so they also work with the Physics mod.
+ * Original Pegasus capes, painted in code as HD pixel art (512x256 texture = 80x128 visible canvas).
+ * Standard cape layout, so they also work with the Physics mod.
  * Animated capes are repainted while someone is wearing them.
  */
 public final class CapeTextures {
@@ -67,7 +67,7 @@ public final class CapeTextures {
         return e.location;
     }
 
-    /** Big PNGs (Lunar packs are up to 2048x1024) are decoded off-thread and shrunk to 512 wide. */
+    /** Big PNGs (HD capes can be 2048x1024) are decoded off-thread and shrunk to 512 wide. */
     private void loadFileAsync(final String id) {
         if (!loading.add(id)) return;
         final File f = Catalog.capeFile(configDir(), id);

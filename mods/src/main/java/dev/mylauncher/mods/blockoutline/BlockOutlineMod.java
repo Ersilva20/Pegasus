@@ -31,7 +31,7 @@ public class BlockOutlineMod extends Feature {
     public boolean chroma = false;
 
     public BlockOutlineMod() {
-        super("blockoutline", "Block Outline", "Customize the outline or add an overlay to the block you are pointing at.", Category.VISUAL);
+        super("blockoutline", "Block Outline", "Change the color and width of the outline on the block you aim at, or fill it.", Category.VISUAL);
     }
 
     @SubscribeEvent

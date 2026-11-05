@@ -17,7 +17,7 @@ import java.util.Map;
  * Change the volume of any sound. Rules: "sound.prefix=percent", comma separated, e.g.
  * "random.explode=30, mob.zombie=0, dig=80". The first matching prefix wins.
  */
-@Mod(modid = "ml_bettersounds", name = "Better Sounds", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_bettersounds", name = "Sound Mixer", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class BetterSoundsMod extends Feature {
     @Setting(name = "Rules (sound=percent, ...)")
     public String rules = "random.explode=50";
@@ -31,7 +31,7 @@ public class BetterSoundsMod extends Feature {
     private final Map<String, Float> parsed = new LinkedHashMap<String, Float>();
 
     public BetterSoundsMod() {
-        super("bettersounds", "Better Sounds", "Modify the volume of any sound in the game", Category.UTILITY);
+        super("bettersounds", "Sound Mixer", "Set the volume of each sound separately.", Category.UTILITY);
         onSettingsChanged();
     }
 

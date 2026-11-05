@@ -27,7 +27,7 @@ public class ArmorStatusMod extends HudFeature {
     public boolean textLeft = false;
 
     public ArmorStatusMod() {
-        super("armorstatus", "Armor Status", "Displays information about the armor you have equipped and the item you are holding on the HUD.",
+        super("armorstatus", "Armor Status", "Shows your armor pieces and held item with their durability.",
                 Category.HUD, false, 1f, 0.75f);
     }
 

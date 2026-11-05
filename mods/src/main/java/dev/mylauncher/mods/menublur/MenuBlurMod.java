@@ -11,7 +11,7 @@ import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = "ml_menublur", name = "Menu Blur", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_menublur", name = "Background Blur", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class MenuBlurMod extends Feature implements PostShaders.Uniforms {
     private static final ResourceLocation SHADER = new ResourceLocation("shaders/post/blur.json");
 
@@ -25,7 +25,7 @@ public class MenuBlurMod extends Feature implements PostShaders.Uniforms {
     private long openedAt;
 
     public MenuBlurMod() {
-        super("menublur", "Menu Blur", "Blurs the background behind menus.", Category.VISUAL);
+        super("menublur", "Background Blur", "Blurs the game behind open menus.", Category.VISUAL);
     }
 
     @SubscribeEvent

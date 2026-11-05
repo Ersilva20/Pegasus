@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 
 /**
- * Pegasus' own settings (the SETTINGS tab of the menu), modelled on Lunar's General / Performance settings.
+ * Pegasus' own settings (the SETTINGS tab of the menu): general, movement and performance options.
  * Always on. The core mixins read these fields directly (see MixinMinecraft, MixinEntityRenderer...).
  */
 public class ClientSettings extends Feature {

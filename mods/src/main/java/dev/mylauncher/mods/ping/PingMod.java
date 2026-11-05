@@ -21,7 +21,7 @@ public class PingMod extends SimpleTextHud {
     public boolean colored = true;
 
     public PingMod() {
-        super("ping", "Ping", "Displays server latency on a nametag or HUD.", 0f, 0.18f);
+        super("ping", "Ping", "Shows your connection delay to the server, in milliseconds.", 0f, 0.18f);
     }
 
     private int ping(EntityPlayer player) {

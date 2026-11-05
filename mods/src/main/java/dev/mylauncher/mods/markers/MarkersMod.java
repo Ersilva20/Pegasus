@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  * Press the Marker key (middle mouse by default) to ping the block you look at. Optionally shares it
  * in party chat as "[Marker] x y z"; markers in that format from teammates are shown too.
  */
-@Mod(modid = "ml_markers", name = "Markers", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_markers", name = "Ping Markers", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class MarkersMod extends Feature {
     private static final Pattern SHARED = Pattern.compile("\\[Marker\\] (-?\\d+) (-?\\d+) (-?\\d+)");
 
@@ -51,7 +51,7 @@ public class MarkersMod extends Feature {
     private final List<Marker> markers = new ArrayList<Marker>();
 
     public MarkersMod() {
-        super("markers", "Markers", "Allows you and your team to mark things in the world, like in various FPS games.", Category.PVP);
+        super("markers", "Ping Markers", "Press a key to mark the block you look at, and share it in party chat if you want.", Category.PVP);
     }
 
     @SubscribeEvent

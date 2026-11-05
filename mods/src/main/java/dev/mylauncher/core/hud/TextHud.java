@@ -7,7 +7,7 @@ import net.minecraft.client.gui.Gui;
 import java.util.Collections;
 import java.util.List;
 
-/** A HUD element made of one or more lines of text, Lunar-style (box background, optional brackets). */
+/** A HUD element made of one or more lines of text, with an optional box background and brackets. */
 public abstract class TextHud extends HudFeature {
     @Setting(name = "Text Color", color = true)
     public int textColor = 0xFFFFFFFF;
@@ -24,7 +24,7 @@ public abstract class TextHud extends HudFeature {
     @Setting(name = "Brackets")
     public boolean brackets = false;
 
-    @Setting(name = "Fixed Width Box", description = "Use a 56px wide box like Lunar's default style")
+    @Setting(name = "Fixed Width Box", description = "Use a fixed 56px wide box so short and long values line up")
     public boolean fixedWidth = true;
 
     @Setting(name = "Padding", min = 0, max = 10, step = 1)

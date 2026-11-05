@@ -21,7 +21,7 @@ public class PotionCounterMod extends SimpleTextHud {
     public boolean splashOnly = true;
 
     public PotionCounterMod() {
-        super("potioncounter", "Potion Counter", "Displays how many healing potions or soups are currently in your inventory on the HUD.", 0f, 0.48f);
+        super("potioncounter", "Potion Counter", "Counts the healing potions and soups left in your inventory.", 0f, 0.48f);
     }
 
     private boolean isHealPotion(ItemStack s) {

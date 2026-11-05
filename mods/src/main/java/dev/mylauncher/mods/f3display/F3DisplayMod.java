@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 /** Scale and move the F3 debug screen. */
-@Mod(modid = "ml_f3display", name = "F3 Display", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_f3display", name = "Debug Screen", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class F3DisplayMod extends Feature {
     @Setting(name = "Scale", min = 0.3, max = 1.5, step = 0.05)
     public float scale = 0.75f;
@@ -21,7 +21,7 @@ public class F3DisplayMod extends Feature {
     private boolean pushed;
 
     public F3DisplayMod() {
-        super("f3display", "F3 Display", "Allows you to move and customize the F3 Debug Screen.", Category.HUD);
+        super("f3display", "Debug Screen", "Restyle the F3 debug screen.", Category.HUD);
     }
 
     @SubscribeEvent

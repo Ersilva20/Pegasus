@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.network.FMLNetworkEvent;
  * Servers send a time update every 20 server ticks. Measuring the real time between those packets
  * estimates the server's ticks per second.
  */
-@Mod(modid = "ml_tps", name = "TPS Hud", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_tps", name = "Server TPS", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class TpsMod extends SimpleTextHud implements Packets.Listener {
     private final long[] intervals = new long[10];
     private int count;
@@ -20,7 +20,7 @@ public class TpsMod extends SimpleTextHud implements Packets.Listener {
     private long lastPacket = -1;
 
     public TpsMod() {
-        super("tps", "TPS Hud", "Estimates the server side ticks per second.", 1f, 0.24f);
+        super("tps", "Server TPS", "Estimates how fast the server is running (20 TPS means no lag).", 1f, 0.24f);
     }
 
     @Override

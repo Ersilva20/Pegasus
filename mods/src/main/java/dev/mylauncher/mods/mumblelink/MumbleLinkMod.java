@@ -39,7 +39,7 @@ public class MumbleLinkMod extends Feature {
     private boolean unsupported;
 
     public MumbleLinkMod() {
-        super("mumblelink", "Mumble Link", "Uses mumble to create positional audio in the Minecraft world.", Category.UTILITY);
+        super("mumblelink", "Mumble Link", "Positional voice chat with Mumble.", Category.UTILITY);
     }
 
     private boolean connect() {

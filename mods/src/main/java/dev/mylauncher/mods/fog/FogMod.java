@@ -9,7 +9,7 @@ import net.minecraftforge.client.event.EntityViewRenderEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = "ml_fog", name = "Fog Customizer", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_fog", name = "Fog Control", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class FogMod extends Feature {
     @Setting(name = "World Fog Start (%)", min = 0, max = 300, step = 5)
     public int start = 75;
@@ -21,7 +21,7 @@ public class FogMod extends Feature {
     public int lava = 100;
 
     public FogMod() {
-        super("fog", "Fog Customizer", "Allows you to adjust the strength of fog for various fog types", Category.WORLD);
+        super("fog", "Fog Control", "Make fog thinner or remove it, separately for each kind of fog.", Category.WORLD);
     }
 
     @SubscribeEvent

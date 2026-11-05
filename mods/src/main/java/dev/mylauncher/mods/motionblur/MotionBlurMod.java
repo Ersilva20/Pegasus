@@ -17,7 +17,7 @@ public class MotionBlurMod extends Feature implements PostShaders.Uniforms {
     public int strength = 5;
 
     public MotionBlurMod() {
-        super("motionblur", "Motion Blur", "Blur your surroundings when moving.", Category.VISUAL);
+        super("motionblur", "Motion Blur", "Leaves a blur trail when you turn the camera.", Category.VISUAL);
     }
 
     @Override

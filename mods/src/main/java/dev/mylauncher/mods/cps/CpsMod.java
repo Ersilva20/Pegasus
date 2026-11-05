@@ -18,7 +18,7 @@ public class CpsMod extends SimpleTextHud {
     private final Deque<Long> right = new ArrayDeque<Long>();
 
     public CpsMod() {
-        super("cps", "CPS", "Displays your clicking speed on the HUD.", 0f, 0.06f);
+        super("cps", "CPS", "Shows how many times per second you click.", 0f, 0.06f);
     }
 
     @SubscribeEvent

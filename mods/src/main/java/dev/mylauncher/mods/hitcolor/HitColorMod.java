@@ -9,7 +9,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent;
 
-@Mod(modid = "ml_hitcolor", name = "Hit Color", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
+@Mod(modid = "ml_hitcolor", name = "Hit Flash Color", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class HitColorMod extends Feature {
     @Setting(name = "Color", description = "Alpha controls how strong the tint is", color = true)
     public int color = 0x4D00AAFF;
@@ -17,7 +17,7 @@ public class HitColorMod extends Feature {
     public boolean chroma = false;
 
     public HitColorMod() {
-        super("hitcolor", "Hit Color", "Changes the color of the damage indicator.", Category.PVP);
+        super("hitcolor", "Hit Flash Color", "Pick the color players and mobs flash when they get hit.", Category.PVP);
     }
 
     @Override
