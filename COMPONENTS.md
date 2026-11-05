@@ -53,6 +53,11 @@ Everything Pegasus does, split by component.
 Required by every Pegasus mod.
 
 - **Mod menu** (Right Shift, `/pegasus` or `/ml`): search, categories, enable/disable, per-mod settings.
+  Three layouts, switched with the buttons at the top right (saved as Settings > Mod Menu Layout):
+  - **Cards**: small cards with an item icon for each mod, name, category and an on/off toggle.
+  - **Grid**: 3 columns of 3:4 tiles: icon + name + gear on top, a live preview of the mod in the middle
+    (HUD mods are drawn for real), an ENABLED / DISABLED button at the bottom; click anywhere else for its settings.
+  - **List**: wide rows without icons: name, category, description, gear and toggle.
 - **HUD editor**: drag elements, scroll to resize, right-click for settings, snapping to the screen
   center and edges (hold Ctrl to disable).
 - Feature system: `@Setting` fields become sliders, toggles, color pickers and dropdowns automatically,
@@ -65,7 +70,7 @@ Required by every Pegasus mod.
 ### Settings tab (built in, always on)
 | Section | Settings |
 |---|---|
-| General | Hit Delay Fix, Minimal View Bobbing, Show Achievements, Disable Hotbar Scrolling, Borderless Fullscreen |
+| General | Hit Delay Fix, Minimal View Bobbing, Show Achievements, Disable Hotbar Scrolling, Borderless Fullscreen, Mod Menu Layout |
 | Movement | Toggle Sprint, Toggle Sneak, Sprint/Sneak status text (movable in the HUD editor) |
 | Performance | Max Unfocused FPS, Max Main Menu FPS, Entity Render Distance, Tile Entity Render Distance |
 

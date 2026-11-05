@@ -24,6 +24,10 @@ public class ClientSettings extends Feature {
     public boolean disableHotbarScrolling = false;
     @Setting(name = "Borderless Fullscreen", description = "F11 makes a borderless window instead of exclusive fullscreen (fast alt-tab)")
     public boolean borderlessFullscreen = false;
+    @Setting(name = "Mod Menu Layout", description = "Cards (small cards with icons), Grid (3 big tiles with a preview) or List (wide rows, no icons)")
+    public MenuLayout menuLayout = MenuLayout.CARDS;
+
+    public enum MenuLayout { CARDS, GRID, LIST }
 
     // ---- Movement (from the Toggle Sneak mod)
     @Setting(name = "Toggle Sprint", section = "MOVEMENT", description = "Press sprint once to keep sprinting")

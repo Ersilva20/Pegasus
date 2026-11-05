@@ -146,6 +146,32 @@ public final class Pixel {
         font().drawString(text, x + 2, y + 1, CREAM, false);
     }
 
+    private static final String[] GEAR = {
+            "   ###   ",
+            " # ### # ",
+            "  #####  ",
+            "###   ###",
+            "###   ###",
+            "###   ###",
+            "  #####  ",
+            " # ### # ",
+            "   ###   ",
+    };
+
+    /** 9x9 pixel gear ("settings") icon. */
+    public static void gear(int x, int y, int color) {
+        for (int r = 0; r < GEAR.length; r++) {
+            String row = GEAR[r];
+            int c = 0;
+            while (c < row.length()) {
+                if (row.charAt(c) != '#') { c++; continue; }
+                int start = c;
+                while (c < row.length() && row.charAt(c) == '#') c++;
+                Gui.drawRect(x + start, y + r, x + c, y + r + 1, color);
+            }
+        }
+    }
+
     public static void logo(int x, int y, int size) {
         GlStateManager.enableBlend();
         GlStateManager.color(1, 1, 1, 1);

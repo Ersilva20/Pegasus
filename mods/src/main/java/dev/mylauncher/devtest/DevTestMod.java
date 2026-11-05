@@ -1,5 +1,6 @@
 package dev.mylauncher.devtest;
 
+import dev.mylauncher.core.ClientSettings;
 import dev.mylauncher.core.Feature;
 import dev.mylauncher.core.MLCore;
 import dev.mylauncher.core.gui.ModMenuScreen;
@@ -28,6 +29,9 @@ public class DevTestMod {
     // name, cape, screen ("" / MENU / SETTINGS / CAPE), motion ("" / walk / jump / turn), camera (1 back, 2 front), pack
     private static final String[][] STEPS = {
             {"01-menu", "pegasus", "MENU", "", "1", ""},
+            {"01c-menu-grid", "pegasus", "MENU:GRID", "", "1", ""},
+            {"01d-menu-list", "pegasus", "MENU:LIST", "", "1", ""},
+            {"01e-menu-grid-hud", "pegasus", "MENU:GRID:HUD", "", "1", ""},
             {"01b-physics", "pegasus", "PHYSICS", "", "1", ""},
             {"02-settings", "pegasus", "SETTINGS", "", "1", ""},
             {"03-wardrobe", "file:lunar/aurora.png", "CAPE", "", "1", "ALL"},
@@ -124,7 +128,14 @@ public class DevTestMod {
         try {
             MLCore.cosmetics.equip(s[1]);
             GuiScreen screen = null;
-            if ("MENU".equals(s[2])) screen = new ModMenuScreen();
+            if (s[2].startsWith("MENU")) {
+                String[] parts = s[2].split(":");
+                MLCore.settings.menuLayout = ClientSettings.MenuLayout.valueOf(parts.length > 1 ? parts[1] : "CARDS");
+                screen = new ModMenuScreen();
+                java.lang.reflect.Field cat = ModMenuScreen.class.getDeclaredField("category");
+                cat.setAccessible(true);
+                cat.set(screen, parts.length > 2 ? dev.mylauncher.core.Category.valueOf(parts[2]) : null);
+            }
             else if ("SETTINGS".equals(s[2])) screen = new SettingsScreen(new ModMenuScreen(), MLCore.settings);
             else if ("PHYSICS".equals(s[2])) screen = new SettingsScreen(new ModMenuScreen(), feature("physics"));
             else if (!s[2].isEmpty()) {
