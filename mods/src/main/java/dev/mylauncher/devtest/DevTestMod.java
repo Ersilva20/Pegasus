@@ -28,17 +28,17 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 public class DevTestMod {
     // name, cape, screen ("" / MENU / SETTINGS / CAPE), motion ("" / walk / jump / turn), camera (1 back, 2 front), pack
     private static final String[][] STEPS = {
-            {"01-menu", "pegasus", "MENU", "", "1", ""},
-            {"01c-menu-grid", "pegasus", "MENU:GRID", "", "1", ""},
-            {"01d-menu-list", "pegasus", "MENU:LIST", "", "1", ""},
-            {"01e-menu-grid-hud", "pegasus", "MENU:GRID:HUD", "", "1", ""},
-            {"01b-physics", "pegasus", "PHYSICS", "", "1", ""},
-            {"02-settings", "pegasus", "SETTINGS", "", "1", ""},
-            {"02b-crosshair-editor", "pegasus", "CROSSHAIR", "", "1", ""},
-            {"03-wardrobe", "aurora", "CAPE", "", "1", "ALL"},
-            {"04-cape-walk", "galaxy", "", "walk", "1", ""},
-            {"05-cape-turn", "storm", "", "turn", "1", ""},
-            {"06-cape-still", "pegasus", "", "", "1", ""},
+            {"01-menu", "file:og/2016.png", "MENU", "", "1", ""},
+            {"01c-menu-grid", "file:og/2016.png", "MENU:GRID", "", "1", ""},
+            {"01d-menu-list", "file:og/2016.png", "MENU:LIST", "", "1", ""},
+            {"01e-menu-grid-hud", "file:og/2016.png", "MENU:GRID:HUD", "", "1", ""},
+            {"01b-physics", "file:og/2016.png", "PHYSICS", "", "1", ""},
+            {"02-settings", "file:og/2016.png", "SETTINGS", "", "1", ""},
+            {"02b-crosshair-editor", "file:og/2016.png", "CROSSHAIR", "", "1", ""},
+            {"03-wardrobe", "file:og/mojang.png", "CAPE", "", "1", "ALL"},
+            {"04-cape-walk", "file:og/cobalt.png", "", "walk", "1", ""},
+            {"05-cape-turn", "file:og/bday.png", "", "turn", "1", ""},
+            {"06-cape-still", "file:og/2016.png", "", "", "1", ""},
     };
 
     private int ticks;

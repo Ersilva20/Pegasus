@@ -79,4 +79,4 @@ Offline mode works for singleplayer and offline servers.
 
 - Pegasus is a personal project, not affiliated with Mojang or Microsoft.
 - Replay Mod is a third-party mod (GPL-3.0) that the launcher downloads from replaymod.com; it is not part of this repository.
-- Every built-in cape is original Pegasus art, painted in code.
+- Pegasus ships no cape images: capes are PNG files you keep in your own game folder.

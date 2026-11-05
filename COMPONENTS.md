@@ -77,9 +77,8 @@ Required by every Pegasus mod.
 
 ### Cosmetics tab (built in, always on)
 - Wardrobe (COSMETICS tab, **O** key or `/wardrobe`) with search and pack tabs.
-- 15 built-in capes, most animated: Pegasus, Pegasus Day, Aurora, Galaxy, Synthwave, Ocean, Flame, Sakura,
-  Ender Eye, Royal, Storm, Matrix, Frost, Rainbow, Checkers.
-- Your own capes: PNGs in `config/pegasus/cosmetics/capes` (each sub-folder becomes a tab).
+- Capes are PNG files in `config/pegasus/cosmetics/capes` (standard cape layout, any 2:1 size, HD works).
+  Each sub-folder becomes a tab, e.g. `capes/og` = **OG**. Cape images stay on your PC; none ship with Pegasus.
 - Optional shared registry URL (e.g. a GitHub Gist) so friends using Pegasus see each other's capes.
 
 ## 3. Mods (`mods/src/main/java/dev/mylauncher/mods`, one jar each)

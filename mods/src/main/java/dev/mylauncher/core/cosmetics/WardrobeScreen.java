@@ -27,7 +27,7 @@ import java.util.Set;
 
 /**
  * Wardrobe: live 3D preview on the left (drag to rotate), cape grid on the right with a search box and
- * one tab per pack (built-in, each folder in capes/, loose files).
+ * one tab per pack (each folder in capes/, plus loose files).
  */
 public class WardrobeScreen extends GuiScreen {
     private static final int CARD_W = 60, CARD_H = 70, GAP = 5;

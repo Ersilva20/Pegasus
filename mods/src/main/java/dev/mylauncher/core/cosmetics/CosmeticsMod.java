@@ -37,7 +37,7 @@ import java.util.Map;
  */
 public class CosmeticsMod extends Feature implements Hooks.SkinOverride {
     @Setting(name = "Equipped Cape")
-    public String cape = "pegasus";
+    public String cape = Catalog.NONE;
     @Setting(name = "Show Other Players' Capes")
     public boolean showOthers = true;
     @Setting(name = "Shared Registry URL (optional)", description = "JSON file listing other Pegasus players' capes")
@@ -86,10 +86,10 @@ public class CosmeticsMod extends Feature implements Hooks.SkinOverride {
     @Override
     public void onSettingsChanged() {
         nextFetch = 0;
-        // A cape from a folder you deleted falls back to the Pegasus cape.
+        // A cape whose file was deleted is taken off.
         if (cape != null && cape.startsWith("file:")
                 && Catalog.capeFile(new java.io.File(mc.mcDataDir, "config/pegasus"), cape) == null) {
-            cape = "pegasus";
+            cape = Catalog.NONE;
         }
     }
 
@@ -146,7 +146,7 @@ public class CosmeticsMod extends Feature implements Hooks.SkinOverride {
     public void onTick(TickEvent.ClientTickEvent event) {
         if (event.phase != TickEvent.Phase.END) return;
         ticks++;
-        if (ticks % 2 == 0) capes.tick(ticks);
+        if (ticks % 20 == 0) capes.tick();
         if (showOthers && !registryUrl.trim().isEmpty() && System.currentTimeMillis() > nextFetch) {
             nextFetch = System.currentTimeMillis() + 5 * 60 * 1000L;
             final String url = registryUrl.trim();
@@ -177,9 +177,8 @@ public class CosmeticsMod extends Feature implements Hooks.SkinOverride {
         }
     }
 
-    /** Registry entries may only use built-in capes (no local file capes or unknown ids from other people). */
+    /** Registry entries may only name capes that exist in your own capes folder (e.g. "file:og/2016.png"). */
     private static String safe(String id) {
-        for (Catalog.Item item : Catalog.CAPES) if (item.id.equals(id)) return id;
-        return Catalog.NONE;
+        return Catalog.capeFile(CapeTextures.configDir(), id) != null ? id : Catalog.NONE;
     }
 }

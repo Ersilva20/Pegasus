@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-/** Every cape Pegasus ships with (art generated in code, see CapeTextures) plus your own PNG capes. */
+/** The capes: PNG files in config/pegasus/cosmetics/capes. Each sub-folder is a pack (e.g. capes/og = the OG capes). */
 public final class Catalog {
     public enum Type { CAPE }
 
@@ -14,19 +14,13 @@ public final class Catalog {
         public final String id;
         public final String name;
         public final Type type;
-        public final boolean animated;
-        /** "PEGASUS" for built-in items, the folder name for cape packs, "YOURS" for loose PNGs. */
+        /** The folder name for cape packs (upper case), "YOURS" for loose PNGs. */
         public final String pack;
 
-        Item(String id, String name, Type type, boolean animated) {
-            this(id, name, type, animated, PEGASUS);
-        }
-
-        Item(String id, String name, Type type, boolean animated, String pack) {
+        Item(String id, String name, Type type, String pack) {
             this.id = id;
             this.name = name;
             this.type = type;
-            this.animated = animated;
             this.pack = pack;
         }
 
@@ -36,26 +30,8 @@ public final class Catalog {
     }
 
     public static final String NONE = "none";
-    public static final String PEGASUS = "PEGASUS";
     public static final String YOURS = "YOURS";
 
-    public static final List<Item> CAPES = Collections.unmodifiableList(Arrays.asList(
-            new Item("pegasus", "Pegasus", Type.CAPE, false),
-            new Item("pegasus_light", "Pegasus Day", Type.CAPE, false),
-            new Item("aurora", "Aurora", Type.CAPE, true),
-            new Item("galaxy", "Galaxy", Type.CAPE, true),
-            new Item("synthwave", "Synthwave", Type.CAPE, true),
-            new Item("ocean", "Ocean", Type.CAPE, true),
-            new Item("flame", "Flame", Type.CAPE, true),
-            new Item("sakura", "Sakura", Type.CAPE, true),
-            new Item("ender", "Ender Eye", Type.CAPE, true),
-            new Item("royal", "Royal", Type.CAPE, true),
-            new Item("storm", "Storm", Type.CAPE, true),
-            new Item("matrix", "Matrix", Type.CAPE, true),
-            new Item("frost", "Frost", Type.CAPE, true),
-            new Item("rainbow", "Rainbow", Type.CAPE, true),
-            new Item("checker", "Checkers", Type.CAPE, false)
-    ));
 
     private Catalog() {
     }
@@ -87,13 +63,13 @@ public final class Catalog {
         Arrays.sort(files);
         for (File f : files) {
             if (f.isFile() && f.getName().toLowerCase().endsWith(".png")) {
-                out.add(new Item("file:" + prefix + f.getName(), prettyName(f.getName()), Type.CAPE, false, pack));
+                out.add(new Item("file:" + prefix + f.getName(), prettyName(f.getName()), Type.CAPE, pack));
             }
         }
     }
 
     public static List<Item> capesWithCustom(File configDir) {
-        List<Item> out = new ArrayList<Item>(CAPES);
+        List<Item> out = new ArrayList<Item>();
         File root = customCapeDir(configDir);
         addPngs(root, "", YOURS, out);
         File[] dirs = root.listFiles();
