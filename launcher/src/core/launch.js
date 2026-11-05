@@ -59,6 +59,7 @@ async function prepare(settings, progress) {
   if (settings.syncBundledMods !== false) {
     progress('Updating Pegasus mods', 1);
     mods.syncBundled(instance);
+    await mods.syncExternal(instance, (msg) => progress(msg, 1));
   }
 
   const optionsFile = path.join(gameDir, 'options.txt');

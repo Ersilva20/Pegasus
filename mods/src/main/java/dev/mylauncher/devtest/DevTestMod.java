@@ -34,6 +34,7 @@ public class DevTestMod {
             {"01e-menu-grid-hud", "pegasus", "MENU:GRID:HUD", "", "1", ""},
             {"01b-physics", "pegasus", "PHYSICS", "", "1", ""},
             {"02-settings", "pegasus", "SETTINGS", "", "1", ""},
+            {"02b-crosshair-editor", "pegasus", "CROSSHAIR", "", "1", ""},
             {"03-wardrobe", "file:lunar/aurora.png", "CAPE", "", "1", "ALL"},
             {"04-cape-walk", "file:lunar/akatsuki.png", "", "walk", "1", ""},
             {"05-cape-turn", "file:mojang/2016.png", "", "turn", "1", ""},
@@ -138,7 +139,15 @@ public class DevTestMod {
                 cat.set(screen, parts.length > 2 ? dev.mylauncher.core.Category.valueOf(parts[2]) : null);
             }
             else if ("SETTINGS".equals(s[2])) screen = new SettingsScreen(new ModMenuScreen(), MLCore.settings);
-            else if ("PHYSICS".equals(s[2])) screen = new SettingsScreen(new ModMenuScreen(), feature("physics"));
+            else if ("CROSSHAIR".equals(s[2])) {
+                dev.mylauncher.mods.crosshair.CrosshairMod ch = (dev.mylauncher.mods.crosshair.CrosshairMod) feature("crosshair");
+                boolean[][] cells = ch.rasterize(dev.mylauncher.mods.crosshair.CrosshairMod.Style.CROSS_DOT);
+                for (int i = 0; i < 15; i++) cells[i][i] = cells[i][14 - i] = i < 4 || i > 10; // diagonal tips
+                ch.setCells(cells);
+                ch.style = dev.mylauncher.mods.crosshair.CrosshairMod.Style.CUSTOM;
+                ch.color = 0xFF55FFFF;
+                screen = ch.customScreen(null);
+            } else if ("PHYSICS".equals(s[2])) screen = new SettingsScreen(new ModMenuScreen(), feature("physics"));
             else if (!s[2].isEmpty()) {
                 screen = MLCore.cosmetics.customScreen(null);
                 java.lang.reflect.Field pack = screen.getClass().getDeclaredField("pack");

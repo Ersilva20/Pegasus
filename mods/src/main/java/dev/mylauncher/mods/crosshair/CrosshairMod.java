@@ -3,8 +3,8 @@ package dev.mylauncher.mods.crosshair;
 import dev.mylauncher.core.Category;
 import dev.mylauncher.core.Feature;
 import dev.mylauncher.core.Setting;
-import dev.mylauncher.core.util.RenderUtil;
 import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,9 +15,15 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(modid = "ml_crosshair", name = "Crosshair", version = "1.0.0", clientSideOnly = true, dependencies = "required-after:mlcore")
 public class CrosshairMod extends Feature {
-    public enum Style { CROSS, CROSS_DOT, DOT, T_SHAPE, CIRCLE, SQUARE, X }
+    public enum Style { CROSS, CROSS_DOT, DOT, T_SHAPE, CIRCLE, SQUARE, X, CUSTOM }
 
-    @Setting(name = "Style")
+    /** Size of the drawable grid of the CUSTOM style; the middle cell is the screen center. */
+    public static final int GRID = 15;
+    static final int MID = GRID / 2;
+    /** A vanilla-like plus. */
+    static final String DEFAULT_PATTERN = encode(rasterPlus());
+
+    @Setting(name = "Style", description = "CUSTOM uses the crosshair you draw in the editor")
     public Style style = Style.CROSS;
     @Setting(name = "Color", color = true)
     public int color = 0xFFFFFFFF;
@@ -39,9 +45,21 @@ public class CrosshairMod extends Feature {
     public boolean thirdPerson = false;
     @Setting(name = "Show in Debug Screen")
     public boolean debug = false;
+    @Setting(name = "Custom Pattern", hidden = true)
+    public String pattern = DEFAULT_PATTERN;
+
+    private String parsedFrom;
+    private boolean[][] parsed;
+    /** When set, draw() marks grid cells instead of drawing (used to turn a style into a pattern). */
+    private boolean[][] raster;
 
     public CrosshairMod() {
         super("crosshair", "Crosshair", "Replace the default Minecraft crosshair with a customizable crosshair.", Category.VISUAL);
+    }
+
+    @Override
+    public GuiScreen customScreen(GuiScreen parent) {
+        return new CrosshairEditorScreen(parent, this);
     }
 
     private boolean aimingAtEnemy() {
@@ -57,7 +75,11 @@ public class CrosshairMod extends Feature {
         if (mc.gameSettings.thirdPersonView != 0 && !thirdPerson) return;
         if (mc.gameSettings.showDebugInfo && !debug) return;
         int cx = event.resolution.getScaledWidth() / 2, cy = event.resolution.getScaledHeight() / 2;
-        int c = useEnemyColor && aimingAtEnemy() ? enemyColor : color;
+        render(cx, cy, useEnemyColor && aimingAtEnemy() ? enemyColor : color);
+    }
+
+    /** Draws the crosshair centered on the pixel at (cx, cy). Also used by the editor preview. */
+    public void render(int cx, int cy, int c) {
         GlStateManager.enableBlend();
         GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0);
         if (outline) draw(cx, cy, outlineColor, 1);
@@ -65,14 +87,102 @@ public class CrosshairMod extends Feature {
         GlStateManager.color(1, 1, 1, 1);
     }
 
+    // ---------------------------------------------------------------- custom pattern
+
+    /** The CUSTOM pattern as [y][x] cells. */
+    public boolean[][] cells() {
+        if (!pattern.equals(parsedFrom)) {
+            parsed = decode(pattern);
+            parsedFrom = pattern;
+        }
+        return parsed;
+    }
+
+    public void setCells(boolean[][] cells) {
+        pattern = encode(cells);
+    }
+
+    /** One 4-digit hex number per row, bit x = column x. */
+    static String encode(boolean[][] cells) {
+        StringBuilder sb = new StringBuilder();
+        for (int y = 0; y < GRID; y++) {
+            int bits = 0;
+            for (int x = 0; x < GRID; x++) if (cells[y][x]) bits |= 1 << x;
+            if (y > 0) sb.append(',');
+            sb.append(String.format("%04x", bits));
+        }
+        return sb.toString();
+    }
+
+    static boolean[][] decode(String s) {
+        boolean[][] cells = new boolean[GRID][GRID];
+        String[] rows = s == null ? new String[0] : s.split(",");
+        for (int y = 0; y < GRID && y < rows.length; y++) {
+            int bits;
+            try {
+                bits = Integer.parseInt(rows[y].trim(), 16);
+            } catch (NumberFormatException e) {
+                continue;
+            }
+            for (int x = 0; x < GRID; x++) cells[y][x] = (bits & (1 << x)) != 0;
+        }
+        return cells;
+    }
+
+    private static boolean[][] rasterPlus() {
+        boolean[][] c = new boolean[GRID][GRID];
+        for (int i = MID - 4; i <= MID + 4; i++) {
+            c[MID][i] = true;
+            c[i][MID] = true;
+        }
+        return c;
+    }
+
+    /** The given built-in style (with the current size/gap/thickness) as a pattern, for the editor's presets. */
+    public boolean[][] rasterize(Style s) {
+        Style old = style;
+        raster = new boolean[GRID][GRID];
+        try {
+            style = s;
+            draw(MID, MID, 0, 0);
+            return raster;
+        } finally {
+            style = old;
+            raster = null;
+        }
+    }
+
+    // ---------------------------------------------------------------- drawing
+
     private void bar(int l, int t, int r, int b, int c, int grow) {
+        if (raster != null) {
+            for (int y = Math.max(0, t); y < Math.min(GRID, b); y++)
+                for (int x = Math.max(0, l); x < Math.min(GRID, r); x++) raster[y][x] = true;
+            return;
+        }
         Gui.drawRect(l - grow, t - grow, r + grow, b + grow, c);
+    }
+
+    private void drawCustom(int cx, int cy, int c, int o) {
+        boolean[][] cells = cells();
+        for (int y = 0; y < GRID; y++) {
+            int x = 0;
+            while (x < GRID) { // one rect per horizontal run of cells
+                if (!cells[y][x]) { x++; continue; }
+                int start = x;
+                while (x < GRID && cells[y][x]) x++;
+                bar(cx - MID + start, cy - MID + y, cx - MID + x, cy - MID + y + 1, c, o);
+            }
+        }
     }
 
     private void draw(int cx, int cy, int c, int o) {
         int th = thickness, half = th / 2;
         int l = cx - half, t = cy - half;
         switch (style) {
+            case CUSTOM:
+                drawCustom(cx, cy, c, o);
+                break;
             case DOT:
                 bar(l, t, l + th, t + th, c, o);
                 break;
@@ -85,10 +195,14 @@ public class CrosshairMod extends Feature {
                 }
                 break;
             }
-            case SQUARE:
-                RenderUtil.outline(cx - size - o, cy - size - o, cx + size + 1 + o, cy + size + 1 + o, c);
-                if (o == 0) RenderUtil.outline(cx - size, cy - size, cx + size + 1, cy + size + 1, c);
+            case SQUARE: {
+                int x1 = cx - size, y1 = cy - size, x2 = cx + size + 1, y2 = cy + size + 1;
+                bar(x1, y1, x2, y1 + 1, c, o);
+                bar(x1, y2 - 1, x2, y2, c, o);
+                bar(x1, y1, x1 + 1, y2, c, o);
+                bar(x2 - 1, y1, x2, y2, c, o);
                 break;
+            }
             case X:
                 for (int i = gap; i <= gap + size; i++) {
                     bar(cx - i, cy - i, cx - i + th, cy - i + th, c, o);

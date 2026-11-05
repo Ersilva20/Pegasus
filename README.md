@@ -79,5 +79,6 @@ Offline mode works for singleplayer and offline servers.
 ## Notes
 
 - Pegasus is a personal project, not affiliated with Mojang, Microsoft or Lunar Client.
+- Replay Mod is a third-party mod (GPL-3.0) that the launcher downloads from replaymod.com; it is not part of this repository.
 - No Lunar Client code or assets are included. Personal cape images are only ever stored locally in the
   game folder and are never part of this repository.

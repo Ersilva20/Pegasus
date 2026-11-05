@@ -71,6 +71,7 @@ public class SettingsScreen extends GuiScreen {
     private List<Object> rows() {
         List<Object> out = new ArrayList<Object>();
         for (SettingField sf : feature.settings()) {
+            if (sf.meta.hidden()) continue;
             if (!sf.meta.section().isEmpty()) out.add(sf.meta.section());
             out.add(sf);
         }

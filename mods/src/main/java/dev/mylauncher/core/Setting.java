@@ -28,4 +28,7 @@ public @interface Setting {
 
     /** Starts a new titled section in the settings screen at this setting. */
     String section() default "";
+
+    /** Saved with the other settings but not listed in the settings screen (edited by the mod's own screen). */
+    boolean hidden() default false;
 }

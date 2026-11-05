@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const AdmZip = require('adm-zip');
 const { paths, ensureDir, bundledModsDir } = require('./paths');
+const { downloadFile } = require('./download');
 
 const DISABLED = '.disabled';
 
@@ -17,6 +18,28 @@ function sameFile(a, b) {
 
 const CORE_RE = /^(Pegasus|ML)-Core-/;
 const BUILTIN_RE = /^(Pegasus|ML)-/;
+
+/**
+ * Third-party mods Pegasus ships by downloading them from their official site (not stored in this repo).
+ * They show up in the PEGASUS tab and can be disabled like the built-in ones.
+ */
+const EXTERNAL = [
+  {
+    name: 'Replay Mod',
+    file: 'replaymod-1.8.9-2.6.28.jar',
+    match: /^replaymod-1\.8\.9-.*\.jar(\.disabled)?$/,
+    urls: [
+      'https://minio.replaymod.com/replaymod/replaymod-1.8.9-2.6.28.jar',
+      'https://www.replaymod.com/download/download_new.php?version=1.8.9-2.6.28',
+    ],
+    sha1: '5ae360f64a3233f455513fb75e0fe2604b57005e',
+    size: 17723584,
+  },
+];
+
+function isExternal(file) {
+  return EXTERNAL.some((e) => e.match.test(file));
+}
 
 /**
  * The bundled mods were renamed from ML-*.jar to Pegasus-*.jar. Two copies of the same mod would crash
@@ -87,6 +110,29 @@ function syncBundled(instance) {
   return { added, updated };
 }
 
+/**
+ * Downloads the EXTERNAL mods into the instance (cached in shared/mods so other instances reuse them).
+ * A disabled copy stays disabled; older versions of the same mod are replaced. Never fails the launch.
+ */
+async function syncExternal(instance, log = () => {}) {
+  const dest = ensureDir(paths.mods(instance));
+  for (const ext of EXTERNAL) {
+    try {
+      const present = fs.readdirSync(dest).filter((f) => ext.match.test(f));
+      const disabled = present.length > 0 && present.every((f) => f.endsWith(DISABLED));
+      const target = path.join(dest, ext.file + (disabled ? DISABLED : ''));
+      if (present.length === 1 && path.join(dest, present[0]) === target && fs.statSync(target).size === ext.size) continue;
+      const cached = path.join(paths.shared, 'mods', ext.file);
+      log('Downloading ' + ext.name);
+      await downloadFile(ext.urls, cached, ext.sha1, ext.size);
+      for (const f of present) fs.unlinkSync(path.join(dest, f));
+      fs.copyFileSync(cached, target);
+    } catch (e) {
+      log(ext.name + ' could not be installed: ' + e.message);
+    }
+  }
+}
+
 /** Reads name/description from mcmod.info when present. */
 function readInfo(file) {
   try {
@@ -115,7 +161,7 @@ function list(instance) {
       file: base,
       enabled,
       required: CORE_RE.test(base),
-      builtIn: BUILTIN_RE.test(base),
+      builtIn: BUILTIN_RE.test(base) || isExternal(base),
       name: info.name || base.replace(/\.jar$/, ''),
       description: info.description || '',
       version: info.version || '',
@@ -151,4 +197,4 @@ function remove(instance, file) {
   for (const f of [path.join(dir, file), path.join(dir, file + DISABLED)]) if (fs.existsSync(f)) fs.unlinkSync(f);
 }
 
-module.exports = { syncBundled, list, setEnabled, addMods, remove };
+module.exports = { syncBundled, syncExternal, list, setEnabled, addMods, remove, EXTERNAL };

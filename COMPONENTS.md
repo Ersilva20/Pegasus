@@ -85,6 +85,10 @@ Required by every Pegasus mod.
 
 ## 3. Mods (`mods/src/main/java/dev/mylauncher/mods`, one jar each)
 
+**Crosshair**: built-in styles (cross, dot, circle, square, X...) plus a **crosshair editor**: draw your own
+crosshair on a 15x15 pixel grid (left click draws, right click erases, mirror X/Y, built-in styles as presets,
+undo with Ctrl+Z, color, live 1x/2x preview). Open it by clicking Crosshair in the mod menu.
+
 **Cape Physics**: capes move like cloth (Verlet simulation): strength, quality, gravity, sway, stiffness,
 wind, body collision, other players; **P** toggles it in game.
 
@@ -99,6 +103,12 @@ wind, body collision, other players; **P** toggles it in game.
 | Hypixel | Hypixel Quickplay, Hypixel Mods (Auto GG, Auto Tip, hide lobby spam), Hypixel Bedwars, Hypixel Stats |
 | Utility | Nick Hider, GUI Scale, Pack Organizer, Better Sounds, Screenshot Uploader, Mumble Link, Media Player (Spotify), Horse Stats |
 
+### Replay Mod (third party)
+The official [Replay Mod](https://www.replaymod.com) 1.8.9 (2.6.28, by CrushedPixel and johni0702, GPL-3.0) is installed
+by the launcher on PLAY: downloaded from replaymod.com and checked with SHA-1 (it is not stored in this repo).
+It shows up in the launcher's PEGASUS tab and can be disabled there. Record, watch and render replays from the
+main menu (Replay Viewer).
+
 ### Default keys
 Zoom **C** · Freelook **Left Alt** · Chunk Borders **F9** · Light Overlay **F7** · Add Waypoint **B** ·
 Quickplay **J** · Slot Lock **L** · Slot Bind **K** · Marker **Middle Mouse** · Wardrobe **O** ·
@@ -111,7 +121,7 @@ Cape Physics **P** · Mod Menu **Right Shift**
 ### Differences from Lunar
 - Cooldowns, Team View and Markers work client-side (Lunar gets them from servers through its Apollo API).
 - Screenshot Uploader opens/copies/shows the file instead of uploading to Lunar's service.
-- Not included: Radio (licensed service), Replay/Rewind (use ReplayMod), Tier Tagger (no public API),
+- Not included: Radio (licensed service), Rewind, Tier Tagger (no public API),
   3D Skins (planned), staff cheats (X-Ray/BHop), and features that don't exist in 1.8.9.
 
 ### Server rules
