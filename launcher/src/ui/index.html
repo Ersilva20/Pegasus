@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; script-src 'self'">
+  <title>Pegasus</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ===== Top bar (retro desktop style) ===== -->
+  <header class="topbar">
+    <div class="brand"><img class="logo" src="img/logo.png" alt="">PEGASUS</div>
+    <div class="drag"></div>
+    <div class="clock" id="clock">--- --:--</div>
+    <button class="tag-badge" id="account" title="Account">
+      <i data-icon="steve" class="head"></i>
+      <span id="accountName">PLAYER</span>
+      <span class="tag-type" id="accountBadge">OFFLINE</span>
+    </button>
+    <div class="winbtns">
+      <button id="btnMin" class="wbtn" title="Minimize"><span class="glyph-min"></span></button>
+      <button id="btnMax" class="wbtn" title="Maximize"><span class="glyph-max"></span></button>
+      <button id="btnClose" class="wbtn close" title="Close"><span class="glyph-x"></span></button>
+    </div>
+  </header>
+
+  <!-- ===== Dock ===== -->
+  <nav class="dock">
+    <button class="tile active" data-page="home"><i data-icon="home"></i><span>HOME</span></button>
+    <button class="tile" data-page="mods"><i data-icon="mods"></i><span>MODS</span></button>
+    <button class="tile" data-page="settings"><i data-icon="settings"></i><span>SETTINGS</span></button>
+    <button class="tile" data-page="console"><i data-icon="console"></i><span>CONSOLE</span></button>
+    <div class="spacer"></div>
+    <button class="tile" id="navFolder" title="Open game folder"><i data-icon="folder"></i><span>FOLDER</span></button>
+  </nav>
+
+  <main>
+    <!-- ===== HOME ===== -->
+    <section class="page active" id="page-home">
+      <div class="greeting">
+        <h1 id="greeting">GOOD EVENING, PLAYER</h1>
+        <p>Your mods. Your style. Your client.</p>
+      </div>
+
+      <div class="window hero-window">
+        <div class="win-title"><span class="win-path">▣ /PLAY</span><span class="win-meta">MINECRAFT 1.8.9 · FORGE</span></div>
+        <div class="hero">
+          <canvas id="scene" width="200" height="56"></canvas>
+          <div class="hero-overlay">
+            <div class="play-box px">
+              <div class="play-info">
+                <div class="play-status" id="playStatus">READY TO PLAY</div>
+                <div class="seg" id="progress"></div>
+              </div>
+              <button class="pbtn green big" id="play"><i data-icon="play"></i><span id="playLabel">PLAY</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat px clickable" data-goto="mods">
+          <i data-icon="mods"></i>
+          <div><div class="stat-big" id="statMods">--</div><div class="stat-sub">MODS ON</div></div>
+        </div>
+        <div class="stat px clickable" data-goto="settings">
+          <i data-icon="chip"></i>
+          <div><div class="stat-big" id="statMem">--</div><div class="stat-sub">MEMORY</div></div>
+        </div>
+        <div class="stat px">
+          <i data-icon="java"></i>
+          <div><div class="stat-big">JAVA 8</div><div class="stat-sub">G1 OPTIMIZED</div></div>
+        </div>
+        <div class="stat px">
+          <i data-icon="server"></i>
+          <div class="grow"><input id="quickServer" class="pinput" placeholder="SERVER IP" spellcheck="false"><div class="stat-sub">AUTO-JOIN</div></div>
+        </div>
+      </div>
+
+      <div class="tipbar px">
+        <i data-icon="heart"></i>
+        <span>In game press <kbd>RIGHT SHIFT</kbd> for the mod menu · <b>EDIT HUD LAYOUT</b> to move things</span>
+        <span class="grow"></span>
+        <button class="pbtn copper small" id="openScreens">SCREENSHOTS</button>
+        <button class="pbtn copper small" id="openMods">MODS FOLDER</button>
+      </div>
+    </section>
+
+    <!-- ===== MODS ===== -->
+    <section class="page" id="page-mods">
+      <div class="window fill">
+        <div class="win-title"><span class="win-path">▣ /MODS</span><span class="win-meta" id="modCount"></span></div>
+        <div class="win-body">
+          <div class="toolbar">
+            <input id="modSearch" class="pinput" placeholder="SEARCH MODS..." spellcheck="false">
+            <div class="tabs" id="modTabs">
+              <button class="ptab active" data-filter="all">ALL</button>
+              <button class="ptab" data-filter="yours">YOURS</button>
+              <button class="ptab" data-filter="builtin">PEGASUS</button>
+              <button class="ptab" data-filter="disabled">OFF</button>
+            </div>
+            <span class="grow"></span>
+            <button class="pbtn copper" id="addMods">+ ADD MODS</button>
+            <button class="pbtn" id="modsFolder">FOLDER</button>
+          </div>
+          <div class="dropzone" id="dropzone">DROP FORGE 1.8.9 .JAR MODS HERE</div>
+          <div class="modlist" id="modList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SETTINGS ===== -->
+    <section class="page" id="page-settings">
+      <div class="settings-grid">
+        <div class="window">
+          <div class="win-title"><span class="win-path">▣ /ACCOUNT</span><span class="saved" id="saved">SAVED ✓</span></div>
+          <div class="win-body form">
+            <label>OFFLINE USERNAME<input id="sUser" class="pinput" maxlength="16" spellcheck="false"></label>
+            <p class="hint">Microsoft login: click your name at the top right. It needs your Azure Client ID (Advanced).</p>
+          </div>
+        </div>
+        <div class="window">
+          <div class="win-title"><span class="win-path">▣ /PERFORMANCE</span></div>
+          <div class="win-body form">
+            <label>MEMORY <span id="memLabel" class="value"></span></label>
+            <div class="memctl">
+              <button class="pbtn copper square" id="memMinus">−</button>
+              <div class="seg" id="memBar"></div>
+              <button class="pbtn copper square" id="memPlus">+</button>
+            </div>
+            <label>JVM PRESET
+              <select id="sPreset" class="pinput">
+                <option value="optimized">OPTIMIZED (G1, LOW PAUSES)</option>
+                <option value="vanilla">VANILLA (JAVA DEFAULTS)</option>
+              </select>
+            </label>
+            <label>EXTRA JVM ARGUMENTS<input id="sJvm" class="pinput" placeholder="-XX:+AlwaysPreTouch" spellcheck="false"></label>
+          </div>
+        </div>
+        <div class="window">
+          <div class="win-title"><span class="win-path">▣ /GAME WINDOW</span></div>
+          <div class="win-body form">
+            <div class="row">
+              <label>WIDTH<input type="number" id="sW" class="pinput" min="640" max="7680"></label>
+              <label>HEIGHT<input type="number" id="sH" class="pinput" min="480" max="4320"></label>
+            </div>
+            <button class="pcheck" id="sFull"><span class="box"></span>START IN FULLSCREEN</button>
+            <label>WHEN THE GAME STARTS
+              <select id="sAfter" class="pinput">
+                <option value="hide">HIDE THE LAUNCHER</option>
+                <option value="keep">KEEP THE LAUNCHER OPEN</option>
+              </select>
+            </label>
+          </div>
+        </div>
+        <div class="window">
+          <div class="win-title"><span class="win-path">▣ /ADVANCED</span></div>
+          <div class="win-body form">
+            <label>AZURE CLIENT ID (MICROSOFT LOGIN)<input id="sClient" class="pinput" spellcheck="false" placeholder="00000000-0000-0000-0000-000000000000"></label>
+            <p class="hint">Free app at <a href="https://portal.azure.com" target="_blank">portal.azure.com</a> → App registrations → personal accounts, public client flows ON. Then request Minecraft access at <a href="https://aka.ms/mce-reviewappid" target="_blank">aka.ms/mce-reviewappid</a>.</p>
+            <label>JAVA 8 PATH (EMPTY = BUILT-IN)<input id="sJava" class="pinput" spellcheck="false" placeholder="C:\...\bin\javaw.exe"></label>
+            <button class="pcheck" id="sSync"><span class="box"></span>KEEP PEGASUS MODS UPDATED</button>
+            <p class="hint" id="dataDir"></p>
+          </div>
+        </div>
+        <div class="window">
+          <div class="win-title"><span class="win-path">▣ /IMPORT</span></div>
+          <div class="win-body form">
+            <p class="hint">Copies your Lunar Client / Minecraft 1.8.9 setup into Pegasus: options and keybinds, servers, 1.8 texture packs, screenshots and your Lunar HUD layout (which mods are on, FPS/CPS/Keystrokes positions). Anything replaced is backed up first.</p>
+            <button class="pbtn copper" id="importBtn">IMPORT FROM LUNAR / MINECRAFT</button>
+            <p class="hint" id="importResult"></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONSOLE ===== -->
+    <section class="page" id="page-console">
+      <div class="window fill">
+        <div class="win-title">
+          <span class="win-path">▣ /CONSOLE</span>
+          <span class="win-actions">
+            <button class="pbtn small" id="copyLog">COPY</button>
+            <button class="pbtn small" id="clearLog">CLEAR</button>
+            <button class="pbtn small" id="logsFolder">LOGS</button>
+            <button class="pbtn red small" id="killGame">FORCE CLOSE</button>
+          </span>
+        </div>
+        <pre class="console" id="console"></pre>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Account window ===== -->
+  <div class="modal hidden" id="userModal">
+    <div class="window modal-win">
+      <div class="win-title"><span class="win-path">▣ /ACCOUNT</span><button class="wbtn close inwin" id="userCancel" title="Close"><span class="glyph-x"></span></button></div>
+      <div class="win-body form">
+        <div class="acct px">
+          <div class="acct-head"><span>MICROSOFT ACCOUNT</span><span class="tag-type" id="msState">NOT SIGNED IN</span></div>
+          <p class="hint">Needed for online servers (Hypixel, Mush...). A Microsoft window opens: type your email and password (or 2FA) there.</p>
+          <div id="msSetup" class="codebox setup hidden">
+            <div>ONE-TIME SETUP: PASTE YOUR AZURE CLIENT ID</div>
+            <div class="row wide">
+              <input id="msClientInput" class="pinput" spellcheck="false" placeholder="00000000-0000-0000-0000-000000000000">
+              <button class="pbtn copper" id="msClientSave">SAVE</button>
+            </div>
+            <div class="hint">Don't have one? <a href="#" id="msGuide">portal.azure.com</a> &gt; App registrations &gt; New (personal accounts). Then Authentication &gt; Add platform &gt; Mobile and desktop &gt; tick the <b>nativeclient</b> URI.</div>
+          </div>
+          <div id="msStatus" class="hint hidden"></div>
+          <div id="msCodeBox" class="codebox hidden">
+            <div>GO TO <a href="#" id="msUrl">microsoft.com/link</a> AND TYPE:</div>
+            <div class="code" id="msCode">--------</div>
+            <div class="hint">Waiting for you to approve in the browser...</div>
+          </div>
+          <div class="row">
+            <button class="pbtn green" id="msSignIn">SIGN IN WITH MICROSOFT</button>
+            <button class="pbtn hidden" id="msCancel">CANCEL</button>
+            <button class="pbtn red hidden" id="msSignOut">SIGN OUT</button>
+          </div>
+          <a href="#" class="hint" id="msUseCode">Problems with the window? Sign in with a code instead</a>
+        </div>
+        <div class="acct px">
+          <div class="acct-head"><span>OFFLINE NAME</span></div>
+          <p class="hint">Singleplayer and offline-mode servers. 3-16 letters, numbers or _</p>
+          <div class="row">
+            <input id="userInput" class="pinput" maxlength="16" spellcheck="false">
+            <button class="pbtn copper" id="userSave">USE OFFLINE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="toast px hidden" id="toast"></div>
+
+  <script src="icons.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "name": "pegasus",
+  "productName": "Pegasus",
+  "version": "1.0.0",
+  "description": "Pegasus - a Minecraft 1.8.9 client launcher with your own mods",
+  "main": "src/main.js",
+  "author": "Pegasus",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "cli": "node src/cli.js",
+    "dist": "electron-builder --win dir"
+  },
+  "build": {
+    "appId": "dev.pegasus.launcher",
+    "productName": "Pegasus",
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "../build/mods",
+        "to": "bundled-mods",
+        "filter": [
+          "*.jar"
+        ]
+      }
+    ],
+    "win": {
+      "target": "dir",
+      "icon": "build/icon.png"
+    }
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.18"
+  },
+  "devDependencies": {
+    "electron": "^45.0.0",
+    "electron-builder": "^26.18.0"
+  }
+}

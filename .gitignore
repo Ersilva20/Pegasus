@@ -1,0 +1,21 @@
+# Dependencies and build output
+node_modules/
+launcher/dist/
+/build/
+mods/build/
+
+# Gradle / IDE
+.gradle/
+.idea/
+.vscode/
+
+# Dev Minecraft client data (worlds, configs, personal capes)
+mods/run/
+
+# Private local notes (never published)
+notes/
+
+# OS / logs
+Thumbs.db
+desktop.ini
+*.log

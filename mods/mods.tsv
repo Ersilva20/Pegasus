@@ -1,0 +1,100 @@
+# id	JarName	Display Name	Description
+fps	FPS	FPS	Display your FPS on the HUD.
+cps	CPS	CPS	Displays your clicking speed on the HUD.
+memory	MemoryUsage	Memory Usage	Displays your total and free memory usage.
+ping	Ping	Ping	Displays server latency on a nametag or HUD.
+coordinates	Coordinates	Coordinates	Displays your coordinates on the HUD.
+directionhud	DirectionHUD	Direction HUD	Display your cardinal direction on the HUD.
+clock	Clock	Clock	Display the current time on the HUD.
+serveraddress	ServerAddress	Server Address	Displays the server you are currently connected to on the HUD.
+daycounter	DayCounter	Day Counter	View the number of Minecraft Days you have played in a world.
+reachdisplay	ReachDisplay	Reach Display	Display how far away you attacked another player from.
+combo	ComboCounter	Combo Counter	Displays how often you have hit another player within a certain amount of time.
+momentum	Momentum	Momentum	Shows your current velocity.
+viewangles	ViewAngles	View Angles	Display your yaw and pitch, with optional speed and altitude.
+playtime	Playtime	Playtime	Track how long you are playing.
+stopwatch	Stopwatch	Stopwatch	Adds stopwatches and timers to the HUD.
+packdisplay	PackDisplay	Pack Display	Shows the currently active Resource Pack on the HUD.
+tps	TPSHud	TPS Hud	Estimates the server side ticks per second.
+potioncounter	PotionCounter	Potion Counter	Displays how many healing potions or soups are in your inventory.
+itemcounter	ItemCounter	Item Counter	Displays how many of the selected items are in your inventory.
+armorstatus	ArmorStatus	Armor Status	Displays your equipped armor and held item on the HUD.
+potioneffects	PotionEffects	Potion Effects	Display your currently active potion effects on the HUD.
+keystrokes	KeyStrokes	Key Strokes	Displays when your movement, mouse or space bar is pressed.
+inventoryhud	InventoryHud	Inventory Hud	A HUD that shows your inventory contents.
+waila	WAILA	WAILA	What am I looking at?
+hotbarkeys	HotbarKeyOverlay	Hotbar Key Overlay	Show hotbar slot keybinds in the hotbar.
+saturation	Saturation	Saturation	Saturation HUD with AppleSkin features.
+pvpinfo	PvPInfo	PvP Info	Displays various PvP statistics.
+knockbacktrainer	KnockbackTrainer	Knockback Trainer	Train jump resets with timing feedback, ground graph and stats.
+itemtracker	ItemTracker	Item Tracker	Shows when and how many items you pick up or drop.
+teamview	TeamView	Team View	Shows where your teammates are.
+cooldowns	Cooldowns	Cooldowns	Displays item cooldown timers on the HUD.
+crosshair	Crosshair	Crosshair	Replace the default crosshair with a customizable one.
+zoom	Zoom	Zoom	Allows you to smoothly zoom in and out.
+fov	FOVChanger	FOV Changer	Customize your field of view for potion or speed states.
+freelook	Freelook	Freelook	Look around without rotating your player.
+snaplook	Snaplook	Snaplook	Change camera perspective while a button is held.
+timechanger	TimeChanger	Time Changer	Set the time of day to a fixed position (client side).
+weatherchanger	WeatherChanger	Weather Changer	Customize the current weather (client side).
+fog	FogCustomizer	Fog Customizer	Adjust the strength of fog for various fog types.
+hurtcam	HurtCam	Hurt Cam	Manage the hurt camera shaking animation.
+damagetint	DamageTint	Damage Tint	Adds a tint to the screen when you are low on health.
+hitcolor	HitColor	Hit Color	Changes the color of the damage indicator.
+mobsize	MobSize	Mob Size	Changes the size of mobs.
+blockoutline	BlockOutline	Block Outline	Customize the outline of the block you are pointing at.
+chunkborders	ChunkBorders	Chunk Borders	View the border of the current chunk.
+hitbox	Hitbox	Hitbox	Customize the hitboxes displayed with F3+B.
+lighting	Lighting	Lighting	Fullbright and lighting tweaks.
+overlay	Overlay	Overlay	Configure fire, water, pumpkin and portal overlays.
+particlechanger	ParticleChanger	Particle Changer	Change how hit particles look and work.
+glintcolorizer	GlintColorizer	Glint Colorizer	Customize the color of enchantment glints.
+shinypots	ShinyPots	Shiny Pots	Gives potions the full box shiny enchantment effect.
+itemphysics	ItemPhysics	Item Physics	Replaces ground items with ones that have physics.
+items2d	2DItems	2D Items	Render dropped items in a 2D perspective facing you.
+itemcustomizer	ItemCustomizer	Item Customizer	Customize held item position/size and dropped item size.
+uhcoverlay	UHCOverlay	UHC Overlay	Bigger gold, golden apples and heads on the ground.
+oldvisuals	1.7Visuals	1.7 Visuals	1.7 block-hit and use animations.
+nametags	Nametags	Nametags	Modify nametags and show your own in third person.
+nickhider	NickHider	Nick Hider	Hide skins and usernames for yourself or others.
+scoreboard	Scoreboard	Scoreboard	Hide, move or customize the scoreboard.
+tabeditor	TabEditor	Tab Editor	Customize the in-game tab list.
+chat	Chat	Chat	Chat background, stacking, timestamps and history.
+titles	Titles	Titles	Adjust title and subtitle scale and position.
+actionbar	ActionBar	Action Bar	Move and scale the action bar.
+bossbar	BossBar	Boss Bar	Hide, move or customize the boss bar.
+f3display	F3Display	F3 Display	Move and scale the F3 debug screen.
+guiscale	GUIScale	GUI Scale	Separate GUI scale for menus and HUD.
+scrolltooltips	ScrollableTooltips	Scrollable Tooltips	Scroll long item tooltips with the mouse wheel.
+motionblur	MotionBlur	Motion Blur	Blur your surroundings when moving.
+menublur	MenuBlur	Menu Blur	Blurs the background behind menus.
+colorsaturation	ColorSaturation	Color Saturation	Change how colorful the game looks.
+tntcountdown	TNTCountdown	TNT Countdown	Displays the fuse countdown above TNT.
+heightlimit	HeightLimit	Height Limit	HUD and overlay for map height limits.
+lightoverlay	LightOverlay	Light Overlay	Shows blocks where mobs can spawn.
+waypoints	Waypoints	Waypoints	Waypoints with beams, names and distance.
+markers	Markers	Markers	Mark blocks for yourself and your team.
+customskies	CustomSkies	Custom Skies	Replace the sky with your own image.
+minimap	Minimap	Minimap	A miniature map of the world on your HUD.
+horsestats	HorseStats	Horse Stats	Shows horse speed, jump and health.
+worldeditcui	WorldEditCUI	WorldEdit CUI	See your WorldEdit selection in-game.
+inventorymod	Inventory	Inventory	Inventory quality of life tweaks.
+slotlocking	SlotLocking	Slot Locking	Lock inventory slots to keep items safe.
+dropprotection	ItemDropProtection	Item Drop Protection	Prevents specific items from being dropped.
+slotbinding	SlotBinding	Slot Binding	Bind inventory slots to hotbar slots.
+hotbarcustomizer	HotbarCustomizer	Hotbar Customizer	Move the hotbar and change its layout.
+inventorysearch	InventorySearch	Inventory Search	Adds a search bar to inventories.
+containeranimations	ContainerAnimations	Container Animations	Animate container screens.
+packorganizer	PackOrganizer	Pack Organizer	Organize resource packs into folders.
+autotexthotkey	AutoTextHotKey	Auto Text Hot Key	Keys that send a command or chat message.
+autotextactions	AutoTextActions	Auto Text Actions	Automatic replies to chat triggers.
+quickplay	HypixelQuickplay	Hypixel Quickplay	Quickly join games on the Hypixel network.
+hypixelmods	HypixelMods	Hypixel Mods	Auto GG, Auto Tip and lobby message hiding.
+bedwars	HypixelBedwars	Hypixel Bedwars	Resource counter and game stats for Bed Wars.
+hypixelstats	HypixelStats	Hypixel Stats	Look up Hypixel stats with /stats.
+killsounds	KillSounds	Kill Sounds	Play a sound when you kill a player.
+bettersounds	BetterSounds	Better Sounds	Modify the volume of any sound.
+screenshot	ScreenshotUploader	Screenshot Uploader	Open, copy or find screenshots instantly.
+mumblelink	MumbleLink	Mumble Link	Positional audio with Mumble.
+mediaplayer	MediaPlayer	Media Player	See and control the music playing on your PC.
+physics	CapePhysics	Cape Physics	Cloth physics for capes.
