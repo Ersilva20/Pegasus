@@ -192,7 +192,7 @@ public class WaypointsMod extends Feature {
     }
 
     @SubscribeEvent
-    public void onKey(InputEvent.KeyInputEvent event) {
+    public void onKey(InputEvent event) {
         if (addKey.isPressed() && mc.thePlayer != null) {
             add("Waypoint " + (current().size() + 1), (int) Math.floor(mc.thePlayer.posX), (int) Math.floor(mc.thePlayer.posY), (int) Math.floor(mc.thePlayer.posZ));
         }

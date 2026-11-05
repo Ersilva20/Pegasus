@@ -68,7 +68,7 @@ public class PhysicsMod extends Feature implements Hooks.CapeRenderer {
         }
 
         @SubscribeEvent
-        public void onKey(InputEvent.KeyInputEvent event) {
+        public void onKey(InputEvent event) {
             if (!key.isPressed() || mc.currentScreen != null) return;
             mod.toggle();
             MLCore.chat("Cape Physics: " + (mod.isEnabled() ? EnumChatFormatting.GREEN + "ON" : EnumChatFormatting.RED + "OFF"));

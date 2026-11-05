@@ -97,7 +97,7 @@ public class MediaPlayerMod extends SimpleTextHud {
     }
 
     @SubscribeEvent
-    public void onKey(InputEvent.KeyInputEvent event) {
+    public void onKey(InputEvent event) {
         if (playPause.isPressed()) press(0xB3);
         if (next.isPressed()) press(0xB0);
         if (previous.isPressed()) press(0xB1);

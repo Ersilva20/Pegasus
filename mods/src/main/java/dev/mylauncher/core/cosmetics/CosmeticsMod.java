@@ -133,7 +133,7 @@ public class CosmeticsMod extends Feature implements Hooks.SkinOverride {
     }
 
     @SubscribeEvent
-    public void onKey(InputEvent.KeyInputEvent event) {
+    public void onKey(InputEvent event) {
         if (key.isPressed() && mc.currentScreen == null && mc.thePlayer != null) mc.displayGuiScreen(new WardrobeScreen(null, this));
     }
 

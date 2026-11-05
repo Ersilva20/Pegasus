@@ -42,7 +42,7 @@ public class LightingMod extends Feature {
     }
 
     @SubscribeEvent
-    public void onKey(InputEvent.KeyInputEvent event) {
+    public void onKey(InputEvent event) {
         if (key.isPressed()) fullbright = !fullbright;
     }
 

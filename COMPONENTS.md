@@ -58,6 +58,8 @@ Required by every Pegasus mod.
 - Feature system: `@Setting` fields become sliders, toggles, color pickers and dropdowns automatically,
   saved to `config/pegasus/<id>.json`.
 - All keybinds under Options > Controls > **Pegasus Mods**.
+- **Mouse button keybinds fix**: Toggle Perspective, Smooth Camera and every Pegasus keybind react
+  immediately when bound to a mouse button (vanilla 1.8.9 waits for the next keyboard press).
 - Pixel-art GUI kit shared by all in-game screens.
 
 ### Settings tab (built in, always on)

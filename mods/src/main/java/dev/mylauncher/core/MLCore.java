@@ -4,6 +4,7 @@ import dev.mylauncher.core.gui.ModMenuScreen;
 import dev.mylauncher.core.hud.HudRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
@@ -143,10 +144,34 @@ public class MLCore {
         LOG.info("Pegasus Core loaded {} features", count);
     }
 
+    // Pegasus key handlers take InputEvent (keyboard AND mouse) so keybinds work on mouse buttons too.
     @SubscribeEvent
-    public void onKey(InputEvent.KeyInputEvent event) {
+    public void onKey(InputEvent event) {
         if (menuKey.isPressed() && Minecraft.getMinecraft().currentScreen == null) {
             Minecraft.getMinecraft().displayGuiScreen(new ModMenuScreen());
+        }
+    }
+
+    /**
+     * Vanilla 1.8.9 only checks Toggle Perspective and Smooth Camera inside its keyboard loop, so when they are
+     * bound to a mouse button the click only takes effect on the next keyboard event (e.g. pressing W or Shift).
+     * Run the same vanilla logic right after the mouse event instead.
+     */
+    @SubscribeEvent
+    public void onMouse(InputEvent.MouseInputEvent event) {
+        Minecraft mc = Minecraft.getMinecraft();
+        if (mc.currentScreen != null || mc.theWorld == null) return;
+        GameSettings gs = mc.gameSettings;
+        if (gs.keyBindTogglePerspective.getKeyCode() < 0) {
+            while (gs.keyBindTogglePerspective.isPressed()) {
+                if (++gs.thirdPersonView > 2) gs.thirdPersonView = 0;
+                if (gs.thirdPersonView == 0) mc.entityRenderer.loadEntityShader(mc.getRenderViewEntity());
+                else if (gs.thirdPersonView == 1) mc.entityRenderer.loadEntityShader(null);
+                mc.renderGlobal.setDisplayListEntitiesDirty();
+            }
+        }
+        if (gs.keyBindSmoothCamera.getKeyCode() < 0) {
+            while (gs.keyBindSmoothCamera.isPressed()) gs.smoothCamera = !gs.smoothCamera;
         }
     }
 

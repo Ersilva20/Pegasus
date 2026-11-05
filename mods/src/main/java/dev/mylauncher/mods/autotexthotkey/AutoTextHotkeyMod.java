@@ -45,7 +45,7 @@ public class AutoTextHotkeyMod extends Feature {
     }
 
     @SubscribeEvent
-    public void onKey(InputEvent.KeyInputEvent event) {
+    public void onKey(InputEvent event) {
         if (mc.thePlayer == null || mc.currentScreen != null) return;
         for (int i = 0; i < keys.length; i++) {
             if (!keys[i].isPressed()) continue;

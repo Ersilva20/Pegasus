@@ -28,7 +28,7 @@ public class StopwatchMod extends SimpleTextHud {
     }
 
     @SubscribeEvent
-    public void onKey(InputEvent.KeyInputEvent event) {
+    public void onKey(InputEvent event) {
         if (startKey.isPressed()) {
             if (runningSince < 0) runningSince = System.currentTimeMillis();
             else {

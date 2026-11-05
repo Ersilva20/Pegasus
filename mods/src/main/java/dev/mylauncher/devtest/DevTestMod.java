@@ -7,10 +7,12 @@ import dev.mylauncher.core.gui.SettingsScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiMainMenu;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.ScreenShotHelper;
 import net.minecraft.world.WorldSettings;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -62,6 +64,7 @@ public class DevTestMod {
         if (mc.thePlayer == null || mc.theWorld == null) return;
         if (step < 0) {
             if (++stepTicks < 100) return;
+            checkMouseKeybinds(mc);
             mc.thePlayer.capabilities.isFlying = false;
             mc.thePlayer.rotationPitch = 0;
             next(mc);
@@ -87,6 +90,30 @@ public class DevTestMod {
             }
             next(mc);
         }
+    }
+
+    /** Simulates mouse side-button clicks (no keyboard event) the way Minecraft's mouse loop does. */
+    private void checkMouseKeybinds(Minecraft mc) {
+        KeyBinding perspective = mc.gameSettings.keyBindTogglePerspective;
+        KeyBinding physicsKey = null;
+        for (KeyBinding k : mc.gameSettings.keyBindings) if ("Toggle Cape Physics".equals(k.getKeyDescription())) physicsKey = k;
+        int oldPerspective = perspective.getKeyCode(), oldPhysics = physicsKey.getKeyCode();
+        perspective.setKeyCode(-97); // mouse button 3 ("button 4")
+        physicsKey.setKeyCode(-96);
+        KeyBinding.resetKeyBindingArrayAndHash();
+        mc.gameSettings.thirdPersonView = 0;
+        KeyBinding.onTick(-97);
+        FMLCommonHandler.instance().fireMouseInput();
+        MLCore.LOG.info("DEVTEST mouse perspective: {}", mc.gameSettings.thirdPersonView == 1 ? "OK" : "FAIL (view " + mc.gameSettings.thirdPersonView + ")");
+        Feature physics = feature("physics");
+        boolean before = physics.isEnabled();
+        KeyBinding.onTick(-96);
+        FMLCommonHandler.instance().fireMouseInput();
+        MLCore.LOG.info("DEVTEST mouse pegasus keybind: {}", physics.isEnabled() != before ? "OK" : "FAIL");
+        if (physics.isEnabled() != before) physics.toggle();
+        perspective.setKeyCode(oldPerspective);
+        physicsKey.setKeyCode(oldPhysics);
+        KeyBinding.resetKeyBindingArrayAndHash();
     }
 
     private void next(Minecraft mc) {

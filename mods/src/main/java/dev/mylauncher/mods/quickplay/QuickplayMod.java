@@ -34,7 +34,7 @@ public class QuickplayMod extends Feature {
     }
 
     @SubscribeEvent
-    public void onKey(InputEvent.KeyInputEvent event) {
+    public void onKey(InputEvent event) {
         if (key.isPressed() && mc.currentScreen == null && mc.thePlayer != null) mc.displayGuiScreen(new Screen());
     }
 

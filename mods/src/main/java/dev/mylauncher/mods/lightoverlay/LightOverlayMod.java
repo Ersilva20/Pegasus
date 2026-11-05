@@ -41,7 +41,7 @@ public class LightOverlayMod extends Feature {
     }
 
     @SubscribeEvent
-    public void onKey(InputEvent.KeyInputEvent event) {
+    public void onKey(InputEvent event) {
         if (key.isPressed()) visible = !visible;
     }
 
